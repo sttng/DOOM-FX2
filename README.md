@@ -60,9 +60,6 @@ from their WADs, and a 2 MB ROM of the shareware DOOM wad.
   * Every monster of a level is created: the object table is sized from the
     level data (`!RLMAXMOBJECTS`); the original left out up to 78 monsters on
     Ultra-Violence (E1M6).
-  * Impassible two-sided lines (windows, fences) block the player and
-    monsters from both sides; the original checked them only from the right side.
-    Projectiles still pass, as on the PC.
   * The player gets less hung up on walls: when a move and its slide
     along the wall are both blocked (door frames, steps, walls made of
     several lines), the move is tried along X only and Y only, as the PC's
