@@ -1,13 +1,14 @@
 # DOOM for the SNES — Super FX 2 (GSU-2)
 
 SNES **DOOM** (1995; Randy Linden's "Reality Engine", Sculptured
-Software), rebuilt from the released `DOOM-FX` source with asar. It adds the
-content and fixes of *The Ultimate DOOM* cartridge (FX3) and stays on a
-**Super FX 2**. The same engine builds DOOM II, TNT: Evilution and Plutonia
-from their WADs, and 2 MB ROMs of shareware DOOM and the DOOM II demo.
+Software), rebuilt from the released `DOOM-FX` source with `asar`. 
 
-> **No game data is included**, except the retouched menu art in
-> `tools/menus/` (made from the cartridge's menu lettering) and the shareware
+It adds the content and fixes of *The Ultimate DOOM* cartridge (FX3) but stays 
+on a **Super FX 2**. The same engine builds DOOM II, TNT: Evilution and Plutonia
+from their WADs, and 2 MB ROMs of shareware DOOM.
+
+> **No game data is included**.
+>  There is some retouched menu art in `tools/menus/` and the shareware
 > title picture `tools/title/TITLE.png`. The build makes the rest from your
 > own files: your *The Ultimate DOOM* cartridge dump and `DOOM.WAD` (v1.9);
 > the DOOM II / Final DOOM sets use your WADs. Do not distribute the
