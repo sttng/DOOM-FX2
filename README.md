@@ -209,8 +209,12 @@ cp -a gamedata-fx3 gamedata-doom2 && ln -sfn gamedata-doom2 data     # each set 
 make doom2 WAD=DOOM2.WAD                                         # 32 maps
 make doom2 WAD=TNT.WAD NAMES=tnt BANK3F=0x6000 MASKED=65536 MASKEDBANKS=3C \
     MASKEDMAPS=MAP01,MAP02,MAP03,MAP04,MAP05,MAP06,MAP07,MAP08,MAP10,MAP11,MAP13,MAP14,MAP15,MAP17,MAP24,MAP25,MAP28  # 17 of 32 maps
+make skypng SKY=1 PNG=tools/skies/TNT-SKY1.png                  # TNT: the reworked SKY1
+make skypng SKY=2 PNG=tools/skies/TNT-SKY2.png                  # TNT: the reworked SKY2
+make skypng SKY=3 PNG=tools/skies/TNT-SKY3.png                  # TNT: the reworked SKY3
 make doom2 WAD=PLUTONIA.WAD NAMES=plutonia BANK3F= MASKED=65536 MASKEDBANKS=29 \
     MASKEDMAPS=MAP01,MAP02,MAP03,MAP04,MAP05,MAP07,MAP08,MAP10,MAP12,MAP14,MAP15,MAP16,MAP17,MAP19,MAP20,MAP21,MAP24,MAP31,MAP32  # 19 of 32 maps
+make skypng SKY=2 PNG=tools/skies/PLUTONIA-SKY2.png             # Plutonia: the reworked SKY2
 ```
 
 * **Maps** in the first 32 level slots as one sequence (`!RLEPISODELEN =
@@ -489,6 +493,7 @@ data/               generated game data (not distributed)
 tools/              build, conversion and test tools
 tools/doomfx-src/   the files of the DOOM-FX source release `make data` reads
 tools/rules/        the WAD conversion rules (textures to walls, wall and sprite sizes, sound effects)
+tools/skies/        reworked skies (make skypng)
 tools/music/        the music converter and song tools (make wadmusic)
 tools/test/         test and analysis scripts (not used by the build)
 tools/legacy/       the xa/xl reference assembler and the xa → asar translator
@@ -528,6 +533,7 @@ Every script's header has the details and its usage.
 | `wadnodes.py` | rebuilds a map's nodes with ZokumBSP so it fits one bank |
 | `rlpvs.py` | the sector visibility table (REJECT/PVS) of a map |
 | `wad2gfx.py` | walls, sprites and masked middle textures |
+| `skypng.py` | a 128x128 picture as one of the skies (`make skypng SKY=n PNG=...`, after the art conversions; `tools/skies/`) |
 | `wallset.py`, `wallvq.py` | the wall set for a WAD's maps; wall format 3 (VQ blocks and codebooks) |
 | `wad2art.py` | title screen, menus, menu skull, fonts, score screens, level names |
 | `wad2cut.py` | weapon HUD frames (the CUT format; `show` renders a weapon) |

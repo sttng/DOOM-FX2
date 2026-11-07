@@ -29,6 +29,8 @@
 #   make wadmusic WAD=<x.WAD>
 #                        - the WAD's music (title, intermission, the levels' songs) converted for
 #                          the SPC700 driver (tools/music/wad2music.py), then build
+#   make skypng SKY=<1-4> PNG=<128x128.png>
+#                        - a picture as one of the skies (tools/skypng.py; after wadgfx, doom2, shareware), then build
 #   make clean           - remove build/;  make distclean: also data and gamedata-*
 #
 # wadart, fx3art, doom2 and shareware then put in the retouched Pause/Save/Load menus
@@ -40,7 +42,7 @@ ZOKUMBSP ?= zokumbsp
 PNGMENUS ?= 1
 MENUS = $(if $(PNGMENUS),$(PYTHON) tools/menus.py retouch --data data,@true)
 
-.PHONY: shareware demo doom2 all rom data wadlevels fx3levels wadgfx fx3gfx wadart fx3art wadsfx fx3sfx wadmusic clean distclean
+.PHONY: skypng shareware demo doom2 all rom data wadlevels fx3levels wadgfx fx3gfx wadart fx3art wadsfx fx3sfx wadmusic clean distclean
 
 all: rom
 
@@ -128,6 +130,13 @@ demo:
 wadmusic:
 	@test -n "$(WAD)" || { echo "usage: make wadmusic WAD=<x.WAD>"; exit 1; }
 	$(PYTHON) tools/music/wad2music.py convert --data data --wad "$(WAD)"
+	@mkdir -p build
+	bash tools/build.sh
+
+# a 128x128 picture as sky SKY (1-4), in the nearest colours of the data set's walls
+skypng:
+	@test -n "$(SKY)" -a -n "$(PNG)" || { echo "usage: make skypng SKY=<1-4> PNG=<128x128.png>"; exit 1; }
+	$(PYTHON) tools/skypng.py --data data --sky $(SKY) --png "$(PNG)"
 	@mkdir -p build
 	bash tools/build.sh
 
