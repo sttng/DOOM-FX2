@@ -1,14 +1,14 @@
 # DOOM for the SNES — Super FX 2 (GSU-2)
 
-SNES **DOOM** (1995; Randy Linden's "Reality Engine", Sculptured
-Software), rebuilt from the released `DOOM-FX` source with `asar`. 
+SNES **DOOM** rebuilt from the released `DOOM-FX` source (1995; Randy Linden's "Reality Engine", 
+Sculptured Software) with `asar`.
 
 It adds the content and fixes of *The Ultimate DOOM* cartridge (FX3) but stays 
 on a **Super FX 2**. The same engine builds DOOM II, TNT: Evilution and Plutonia
-from their WADs, and 2 MB ROMs of shareware DOOM.
+from their WADs, and a 2 MB ROM of shareware DOOM.
 
 > **No game data is included**.
->  There is some retouched menu art in `tools/menus/` and the shareware
+> There is some retouched menu art in `tools/menus/` and the shareware
 > title picture `tools/title/TITLE.png`. The build makes the rest from your
 > own files: your *The Ultimate DOOM* cartridge dump and `DOOM.WAD` (v1.9);
 > the DOOM II / Final DOOM sets use your WADs.
@@ -80,7 +80,13 @@ from their WADs, and 2 MB ROMs of shareware DOOM.
 ## Build
 
 Requirements: `asar` 1.91, Python 3.8+ with Pillow and numpy (scipy for
-`wad2soundfx.py`).
+`wad2soundfx.py`). 
+
+Converting maps from WADs also needs
+[ZokumBSP](https://github.com/zokum-no/zokumbsp) (used commit
+`22af6de`; `ZOKUMBSP=<path>` or `$ZOKUMBSP`) to rebuild the nodes of maps that
+do not fit (*Node rebuilds* below): the DOOM II, TNT and Plutonia sets need it.
+Without it, such a map keeps the cartridge's version or is left out.
 
 ```sh
 make data FX3="THE ULTIMATE DOOM.sfc" WAD=DOOM.WAD   # -> gamedata-fx3/, linked as data/
