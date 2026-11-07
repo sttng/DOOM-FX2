@@ -53,8 +53,8 @@ from their WADs, and a 2 MB ROM of shareware DOOM.
   port 1, not yet on a controller.
 * **Nightmare as on the PC:** monsters respawn, act twice as fast, fireballs
   fly 1.5× as fast; double ammo.
-* **Faster** renderer (*Speed*).
-* **Fixes** (from The Ultimate DOOM and this port):
+* **Faster** renderer.
+* **Fixes**:
   * Every monster of a level is created: the object table is sized from the
     level data (`!RLMAXMOBJECTS`); the original left out up to 78 monsters on
     Ultra-Violence (E1M6).
