@@ -1,7 +1,7 @@
 # DOOM for the SNES — Super FX 2 (GSU-2)
 
 SNES **DOOM** rebuilt from the released `DOOM-FX` source (1995; Randy Linden's "Reality Engine", 
-Sculptured Software) with `asar`.
+Sculptured Software) with [`asar`](https://github.com/RPGHacker/asar).
 
 It adds the content and fixes of *The Ultimate DOOM* cartridge (FX3) but stays 
 on a **Super FX 2**. The same engine builds DOOM II, TNT: Evilution and Plutonia
@@ -79,7 +79,7 @@ from their WADs, and a 2 MB ROM of shareware DOOM.
 
 ## Build
 
-Requirements: `asar` 1.91, Python 3.8+ with Pillow and numpy (scipy for
+Requirements: [`asar` 1.91](https://github.com/RPGHacker/asar), Python 3.8+ with Pillow and numpy (scipy for
 `wad2soundfx.py`). 
 
 Converting maps from WADs also needs
