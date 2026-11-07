@@ -7,12 +7,12 @@ It adds the content and fixes of *The Ultimate DOOM* cartridge (FX3) but stays
 on a **Super FX 2**. 
 
 This engine also builds DOOM II, TNT: Evilution and Plutonia
-from their WADs, and a 2 MB ROM of shareware DOOM wad.
+from their WADs, and a 2 MB ROM of the shareware DOOM wad.
 
 > **No game data is included**.
 > There is some retouched menu art in `tools/menus/` and the shareware
 > title picture `tools/title/TITLE.png`. The build makes the rest from your
-> own files: your *The Ultimate DOOM* cartridge dump and `DOOM.WAD` (v1.9);
+> own files: your FX3 *The Ultimate DOOM* cartridge dump and `DOOM.WAD` (v1.9);
 > the DOOM II / Final DOOM sets use your WADs.
 
 ## Compared with the original SNES DOOM
