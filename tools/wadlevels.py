@@ -3,26 +3,28 @@
 wadlevels.py - put levels converted from a DOOM .WAD (tools/wad2rl.py) into
 the data set and build the ROM.
 
-usage: wadlevels.py --wad DOOM.WAD [--wad PWAD.wad] [--zokumbsp PATH] [--rebuild-nodes]
+usage: wadlevels.py --wad DOOM.WAD [--wad PWAD.wad] [--zokumbsp PATH] [--keep-nodes]
                     [--pvs compute|wad] [--no-build] [--profile doom2 [--names tnt|plutonia]] [MAPS...]
        wadlevels.py --restore            (back to the FX3 levels)
 
 * starts from the FX3 levels (data/RLLEV.fx3, written by `make data`)
 * converts the maps (default: every map of the WAD the data set has a slot
   for) with the tables learned from the FX3 levels (data/wad2rl.json)
+* needs ZokumBSP (--zokumbsp, $ZOKUMBSP or zokumbsp on the PATH): the nodes
+  of every map are rebuilt with it first (tools/wadnodes.py; nothing visible
+  changes).  --keep-nodes: the WAD's nodes are kept where the map fits (tests)
 * a map whose BSP, AREAS, VERTEXES, SEGS and FACES exceed the one 64 KB bank
-  the engine reads them from gets its nodes rebuilt with ZokumBSP
-  (tools/wadnodes.py), in steps until it fits: nodes only; + merging
-  adjacent look-alike sectors; + merging neighbours whose light differs by
-  16, then 32 (visible: printed).  Without ZokumBSP (--zokumbsp or
-  $ZOKUMBSP) or when no step fits, the map keeps its FX3 version.
-  --rebuild-nodes: every map's nodes are rebuilt first.
+  the engine reads them from gets its nodes rebuilt again, in steps until it
+  fits: + merging adjacent look-alike sectors; + merging neighbours whose
+  light differs by 16, then 32 (visible: printed).  When no step fits, the
+  map keeps its FX3 version (--profile doom2: it is left out).
 * builds (tools/build.sh; not with --no-build); while the 2 MB GamePak ROM
   (what the Super FX sees) is full, the nodes of the map that gains most get
-  rebuilt with ZokumBSP (nothing visible changes: same lines, sectors and
-  segs per line), one map at a time; when that is not enough, the converted
-  map that grew most against its FX3 version goes back to the FX3 version
-  (the SNES team cut some maps for this reason)
+  rebuilt with ZokumBSP (nothing visible changes: same lines and sectors,
+  the same segs except back sides that cannot be seen), one map at a time;
+  when that is not enough, the converted map that grew most against its
+  FX3 version goes back to the FX3 version (the SNES team cut some maps
+  for this reason)
 * --profile doom2 (also TNT/Plutonia with --names): MAP01-MAP32 into the
   first 32 slots in DOOM II order; a map that does not convert or fit is
   left out (the game skips the slot) instead of keeping an FX3 level, and
@@ -184,10 +186,13 @@ def fit_bank(wads, lv, pvs, zokum):
         size = wadnodes.onebank_size(wads + [pw], src(lv))
         print('%s: %s: %s bytes' % (lv, what, size))
         if size is not None and size <= BANK:
-            for n in notes:
-                print('   ' + n)
             convert(wads + [pw], [lv], pvs)
-            return True
+            real = onebank(LEV, lv)             # (the estimate's FACES are without the wall map)
+            if real <= BANK:
+                for n in notes:
+                    print('   ' + n)
+                return True
+            print('%s: converted: %d bytes' % (lv, real))
     print('%s: still too big' % lv)
     return False
 
@@ -227,12 +232,15 @@ def main():
     ap.add_argument('--zokumbsp', default=os.environ.get('ZOKUMBSP', 'zokumbsp'), help='ZokumBSP binary (default $ZOKUMBSP)')
     ap.add_argument('--profile', choices=['doom2'], help='doom2: MAP01-MAP32 into the slots, DOOM II order and names')
     ap.add_argument('--names', choices=sorted(NAMES), default='doom2', help='--profile doom2: level names (tnt: TNT Evilution)')
-    ap.add_argument('--rebuild-nodes', action='store_true',
-                    help='rebuild the nodes of every map with ZokumBSP (not only where needed)')
+    ap.add_argument('--keep-nodes', action='store_true',
+                    help="keep the WAD's nodes where the map fits (default: every map's nodes rebuilt with ZokumBSP)")
+    ap.add_argument('--rebuild-nodes', action='store_true', help=argparse.SUPPRESS)   # (the default now)
     a = ap.parse_args()
     global DROP
     if not os.path.isdir(FX3):
         sys.exit('%s missing: run "make data" first' % FX3)
+    if not a.restore and not (a.zokumbsp and shutil.which(a.zokumbsp)):     # (before the levels are reset)
+        sys.exit('ZokumBSP not found (--zokumbsp, $ZOKUMBSP or zokumbsp on the PATH): it rebuilds the nodes of every map')
     shutil.rmtree(LEV, ignore_errors=True)
     shutil.copytree(FX3, LEV)
     shutil.rmtree(os.path.join(DATA, 'wadnodes'), ignore_errors=True)   # maps rebuilt by ZokumBSP (PWADs)
@@ -259,9 +267,7 @@ def main():
     if bad:
         sys.exit('no level slot for %s in levels.inc (this data set has %s..%s)' % (' '.join(bad), slots[0], slots[-1]))
     rebuilt_all = []
-    if a.rebuild_nodes:
-        if not (a.zokumbsp and shutil.which(a.zokumbsp)):
-            sys.exit('--rebuild-nodes needs ZokumBSP (--zokumbsp or $ZOKUMBSP)')
+    if not a.keep_nodes:
         sav = node_savings(a.wad, maps, a.zokumbsp)
         rebuilt_all = [os.path.join(DATA, 'wadnodes', lv + '.wad') for lv in maps]
         print('nodes rebuilt with ZokumBSP: %d maps, %+d bytes of BSP/AREAS/VERTEXES/SEGS/FACES' % (

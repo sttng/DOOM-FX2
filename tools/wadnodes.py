@@ -13,7 +13,10 @@ and rebuilt the BSP.  This tool does the same automatically:
      sound).  The lines between them then have the same sector on both sides
      and draw nothing.
   2. rebuild the nodes with ZokumBSP (-ni: no segs for those lines; they
-     stay in LINEDEFS for collision and triggers).
+     stay in LINEDEFS for collision and triggers.  -np=b: node picks that
+     split fewer segs and make fewer subsectors.  -nb: no back seg for a
+     two-sided line whose back sector is closed (floor = ceiling) and never
+     moves: nobody stands in such a sector, so that side is never seen).
 
 Writes a PWAD with the new map, to be given to wad2rl.py after the IWAD.
 
@@ -27,7 +30,7 @@ sys.path.insert(0, HERE)
 import wad2rl   # noqa: E402
 
 LUMPS = ['THINGS', 'LINEDEFS', 'SIDEDEFS', 'VERTEXES', 'SEGS', 'SSECTORS', 'NODES', 'SECTORS', 'REJECT', 'BLOCKMAP']
-ZOKUM_OPTS = ['-b-', '-nq', '-np=u']   # keep BLOCKMAP; rebuild NODES and REJECT
+ZOKUM_OPTS = ['-b-', '-nq', '-np=b', '-nb']   # keep BLOCKMAP; rebuild NODES and REJECT
 INVISIBLE = '-ni'     # no segs for two-sided lines with the same sector on both sides
 SOUNDBLOCK = 0x40
 

@@ -60,6 +60,9 @@ from their WADs, and a 2 MB ROM of the shareware DOOM wad.
   * Every monster of a level is created: the object table is sized from the
     level data (`!RLMAXMOBJECTS`); the original left out up to 78 monsters on
     Ultra-Violence (E1M6).
+  * Impassible two-sided lines (windows, fences) block the player and
+    monsters from both sides; the original checked them only from the right side.
+    Projectiles still pass, as on the PC.
   * The player gets less hung up on walls: when a move and its slide
     along the wall are both blocked (door frames, steps, walls made of
     several lines), the move is tried along X only and Y only, as the PC's
@@ -84,11 +87,10 @@ Requirements:
 - [ZokumBSP](https://github.com/zokum-no/zokumbsp) (used commit`22af6de`)
 - FX3 "THE ULTIMATE DOOM.sfc" rom dump
 
-Converting maps from WADs is done with
-[ZokumBSP](https://github.com/zokum-no/zokumbsp) (used commit
-`22af6de`; `ZOKUMBSP=<path>` or `$ZOKUMBSP`) to rebuild the nodes of maps that
-do not fit (*Node rebuilds* below): the DOOM II, TNT and Plutonia sets need it.
-Without it, such a map keeps the cartridge's version or is left out.
+Converting maps from WADs needs
+[ZokumBSP](https://github.com/zokum-no/zokumbsp) (used commit `22af6de`;
+on the PATH, or `ZOKUMBSP=<path>` / `$ZOKUMBSP`): it rebuilds the nodes of
+every converted map (*Node rebuilds* below).
 
 ```sh
 make data FX3="THE ULTIMATE DOOM.sfc" WAD=DOOM.WAD   # -> gamedata-fx3/, linked as data/
@@ -124,7 +126,7 @@ cartridge again instead, and `rules.py check` compares the result with
 `tools/rules/`.
 
 ```sh
-make wadlevels WAD=DOOM.WAD [MAPS="E1M6 E3M5"] [ZOKUMBSP=...]   # make fx3levels
+make wadlevels WAD=DOOM.WAD [MAPS="E1M6 E3M5"]                 # make fx3levels
 make wadgfx    WAD=DOOM.WAD [PWAD=x.wad]                        # make fx3gfx
 make wadart    WAD=DOOM.WAD                                     # make fx3art
 make wadsfx    WAD=DOOM.WAD [FULL=1]                            # make fx3sfx
@@ -139,11 +141,15 @@ make wadsfx    WAD=DOOM.WAD [FULL=1]                            # make fx3sfx
   sector, and it is much tighter than the WAD's. Converted maps match the FX3
   levels to 98–100 % in every field (`wad2rl.py compare`) except the upper
   and lower textures of two-sided lines (42 % and 49 %).
-* **Node rebuilds** (`wadnodes.py`, ZokumBSP at commit `22af6de`): only where
-  needed — a map whose BSP, areas, vertexes, segs and faces exceed one 64 KB
-  bank is rebuilt without invisible segs and with look-alike sectors merged,
-  and when the GamePak ROM is full the map that gains most is rebuilt. If a
-  map still does not fit, it keeps the cartridge version.
+* **Node rebuilds** (`wadnodes.py`, ZokumBSP at commit `22af6de`): every
+  converted map gets new nodes (`-np=b`: node picks that split fewer segs and
+  make fewer subsectors; `-nb`: no back side for lines whose back sector is
+  closed and never moves). Nothing visible changes, and the maps get smaller.
+  A map whose BSP, areas, vertexes, segs and faces still exceed one 64 KB bank
+  is rebuilt without invisible segs and with look-alike sectors merged, and
+  when the ROM is full the map that gains most is rebuilt. If a map still
+  does not fit, it keeps the cartridge version (DOOM II, TNT, Plutonia: it is
+  left out).
 * **Walls and sprites** (`wad2gfx.py`): the PC art in the SNES palette, with
   the cartridge's size savings learned per wall and sprite. Wall columns are
   shared with the most similar column of the same wall until the strips fit
@@ -200,11 +206,11 @@ make wadsfx    WAD=DOOM.WAD [FULL=1]                            # make fx3sfx
 
 ```sh
 cp -a gamedata-fx3 gamedata-doom2 && ln -sfn gamedata-doom2 data     # each set in its own copy
-make doom2 WAD=DOOM2.WAD ZOKUMBSP=<zokumbsp>                     # 32 maps
+make doom2 WAD=DOOM2.WAD                                         # 32 maps
 make doom2 WAD=TNT.WAD NAMES=tnt BANK3F=0x6000 MASKED=65536 MASKEDBANKS=3C \
-    MASKEDMAPS=MAP01,MAP02,MAP03,MAP04,MAP05,MAP06,MAP07,MAP08,MAP10,MAP11,MAP13,MAP14,MAP15,MAP17,MAP24,MAP25,MAP28 ZOKUMBSP=...  # 17 of 32 maps
+    MASKEDMAPS=MAP01,MAP02,MAP03,MAP04,MAP05,MAP06,MAP07,MAP08,MAP10,MAP11,MAP13,MAP14,MAP15,MAP17,MAP24,MAP25,MAP28  # 17 of 32 maps
 make doom2 WAD=PLUTONIA.WAD NAMES=plutonia BANK3F= MASKED=65536 MASKEDBANKS=29 \
-    MASKEDMAPS=MAP01,MAP02,MAP03,MAP04,MAP05,MAP07,MAP08,MAP10,MAP12,MAP14,MAP15,MAP16,MAP17,MAP19,MAP20,MAP21,MAP24,MAP31,MAP32 ZOKUMBSP=...  # 19 of 32 maps
+    MASKEDMAPS=MAP01,MAP02,MAP03,MAP04,MAP05,MAP07,MAP08,MAP10,MAP12,MAP14,MAP15,MAP16,MAP17,MAP19,MAP20,MAP21,MAP24,MAP31,MAP32  # 19 of 32 maps
 ```
 
 * **Maps** in the first 32 level slots as one sequence (`!RLEPISODELEN =
@@ -299,7 +305,7 @@ the shareware `DOOM1.WAD` (v1.9).
 
 ```sh
 cp -a gamedata-fx3 gamedata-shareware && ln -sfn gamedata-shareware data   # a copy of a DOOM data set (make data)
-make shareware WAD=DOOM1.WAD ZOKUMBSP=<zokumbsp>
+make shareware WAD=DOOM1.WAD
 ```
 
 * `tools/mk2mb.py shareware` keeps the nine Episode 1 slots, makes E1M8 end the

@@ -5,9 +5,9 @@
 #                          source files it needs come from tools/doomfx-src unless SRC= names another copy
 #                          (the WAD conversion rules from tools/rules; LEARN=1: learned from the cartridge)
 #   make                 - assemble build/doom.sfc (tools/build.sh)
-#   make wadlevels WAD=<DOOM.WAD> [PWAD=<x.wad>] [MAPS="E1M1 E1M2"] [ZOKUMBSP=<path>] [REBUILD=1] [PROFILE=doom2]
-#                        - levels converted from a WAD (tools/wadlevels.py, tools/wad2rl.py), then build;
-#                          ZokumBSP rebuilds the nodes of maps too big for one bank (REBUILD=1: of every map)
+#   make wadlevels WAD=<DOOM.WAD> [PWAD=<x.wad>] [MAPS="E1M1 E1M2"] [PROFILE=doom2]
+#                        - levels converted from a WAD (tools/wadlevels.py, tools/wad2rl.py), then build
+#                          (ZokumBSP rebuilds the nodes of every map)
 #   make fx3levels       - back to the FX3 levels
 #   make wadgfx WAD=<DOOM.WAD> [PWAD=<x.wad>]
 #                        - walls and sprites converted from a WAD (tools/wad2gfx.py), then build
@@ -19,9 +19,9 @@
 #                        - sound effects converted from a WAD (tools/wad2soundfx.py), then build
 #   make fx3sfx          - back to the cartridge sound effects
 #   make doom2 WAD=<DOOM2.WAD|TNT.WAD|PLUTONIA.WAD> [NAMES=tnt|plutonia] [BANK3F=n] [MASKED=n]
-#              [MASKEDBANKS=3C,..] [MASKEDMAPS=MAP01,..] [WALLS=vq|rle] [ZOKUMBSP=<path>]
+#              [MASKEDBANKS=3C,..] [MASKEDMAPS=MAP01,..] [WALLS=vq|rle]
 #                        - DOOM II / TNT / Plutonia on a copy of a data set (see the doom2 target)
-#   make shareware WAD=<DOOM1.WAD> [ZOKUMBSP=<path>]
+#   make shareware WAD=<DOOM1.WAD>
 #                        - the shareware ROM (Episode 1, 2 MB) on a copy of a DOOM data set
 #   make demo WAD=<DOOM2.WAD>
 #                        - DOOM II demo: MAP01-MAP03, 2 MB ROM, with the WAD's music converted
@@ -33,8 +33,10 @@
 #
 # wadart, fx3art, doom2 and shareware then put in the retouched Pause/Save/Load menus
 # (tools/menus/*.png via tools/menus.py retouch; PNGMENUS= leaves them out).
+# The WAD levels (wadlevels, doom2, shareware) need ZokumBSP: ZOKUMBSP=<path> if it is not on the PATH.
 #
 PYTHON ?= python3
+ZOKUMBSP ?= zokumbsp
 PNGMENUS ?= 1
 MENUS = $(if $(PNGMENUS),$(PYTHON) tools/menus.py retouch --data data,@true)
 
@@ -54,12 +56,11 @@ data:
 wadlevels:
 	@test -n "$(WAD)" || { echo "usage: make wadlevels WAD=<DOOM.WAD> [PWAD=<x.wad>] [MAPS=...]"; exit 1; }
 	@mkdir -p build
-	$(PYTHON) tools/wadlevels.py --wad "$(WAD)" $(if $(PWAD),--wad "$(PWAD)") $(if $(ZOKUMBSP),--zokumbsp "$(ZOKUMBSP)") $(if $(REBUILD),--rebuild-nodes) $(if $(PROFILE),--profile $(PROFILE)) $(MAPS)
+	$(PYTHON) tools/wadlevels.py --wad "$(WAD)" $(if $(PWAD),--wad "$(PWAD)") --zokumbsp "$(ZOKUMBSP)" $(if $(PROFILE),--profile $(PROFILE)) $(MAPS)
 
 # DOOM II / TNT / Plutonia: levels (MAP01-MAP32), walls, sprites, super shotgun, title/menus and
 # sound effects from the WAD into the data set, then build (tools/wadlevels.py does).  Work on a copy
-# of the data set; make fx3levels fx3gfx fx3art fx3sfx goes back.  With ZOKUMBSP the nodes of every
-# map are rebuilt.  NAMES: level names (default doom2).
+# of the data set; make fx3levels fx3gfx fx3art fx3sfx goes back.  NAMES: level names (default doom2).
 # BANK3F: bytes of GamePak bank $3F for wall strips (empty: none, the levels get it; Plutonia)
 BANK3F ?= 0x7E00
 # MASKED: bytes of strips for the middle textures of two-sided lines (grates, bars, windows; drawn
@@ -75,7 +76,7 @@ MASKEDMAPS ?=
 #        rle = wall format 2, 128 walls as run-length strips
 WALLS ?= vq
 doom2:
-	@test -n "$(WAD)" || { echo "usage: make doom2 WAD=<DOOM2.WAD or TNT.WAD> [NAMES=tnt|plutonia] [BANK3F=] [MASKED=n] [MASKEDBANKS=3C,27] [WALLS=vq|rle] [ZOKUMBSP=<zokumbsp>]"; exit 1; }
+	@test -n "$(WAD)" || { echo "usage: make doom2 WAD=<DOOM2.WAD or TNT.WAD> [NAMES=tnt|plutonia] [BANK3F=] [MASKED=n] [MASKEDBANKS=3C,27] [WALLS=vq|rle]"; exit 1; }
 	$(PYTHON) tools/wad2gfx.py convert --data data --wad "$(WAD)" --doom2-monsters --bank-1f --extra-banks --map-walls \
 		$(if $(BANK3F),--bank-3f --bank-3f-size $(BANK3F)) --slots-by likeness --boost tools/doom2_wallboost.json \
 		--masked-opaque --masked-budget $(MASKED) $(if $(MASKEDBANKS),--masked-banks "$(MASKEDBANKS)") $(if $(MASKEDMAPS),--masked-maps "$(MASKEDMAPS)") \
@@ -85,7 +86,7 @@ doom2:
 	$(PYTHON) tools/wad2art.py convert --data data --wad "$(WAD)" --interpic --level-names --cart skill
 	$(MENUS)
 	$(PYTHON) tools/wad2soundfx.py convert --data data --wad "$(WAD)"
-	$(PYTHON) tools/wadlevels.py --profile doom2 --names $(or $(NAMES),doom2) --wad "$(WAD)" $(if $(ZOKUMBSP),--zokumbsp "$(ZOKUMBSP)" --rebuild-nodes)
+	$(PYTHON) tools/wadlevels.py --profile doom2 --names $(or $(NAMES),doom2) --wad "$(WAD)" --zokumbsp "$(ZOKUMBSP)"
 
 # DOOM shareware: Episode 1 only, 2 MB ROM (tools/mk2mb.py shareware), with the levels, walls, sprites,
 # title/menus, intermission picture, sound effects and weapons of the shareware DOOM1.WAD.  Only the
@@ -99,9 +100,9 @@ SWMAPS = E1M1 E1M2 E1M3 E1M4 E1M5 E1M6 E1M7 E1M8 E1M9
 # the first wad2gfx.py pass writes MASKED.JSON for the level conversion
 SWMASKED = --masked --masked-opaque --masked-budget 65536
 shareware:
-	@test -n "$(WAD)" || { echo "usage: make shareware WAD=<DOOM1.WAD> [ZOKUMBSP=<zokumbsp>]"; exit 1; }
+	@test -n "$(WAD)" || { echo "usage: make shareware WAD=<DOOM1.WAD>"; exit 1; }
 	$(PYTHON) tools/wad2gfx.py convert --data data --wad "$(WAD)" $(SWMASKED)
-	$(PYTHON) tools/wadlevels.py --no-build --wad "$(WAD)" $(if $(ZOKUMBSP),--zokumbsp "$(ZOKUMBSP)") $(SWMAPS)
+	$(PYTHON) tools/wadlevels.py --no-build --wad "$(WAD)" --zokumbsp "$(ZOKUMBSP)" $(SWMAPS)
 	$(PYTHON) tools/mk2mb.py shareware --wad "$(WAD)"
 	$(PYTHON) tools/wad2gfx.py convert --data data --wad "$(WAD)" $(SWMASKED) --drop-unused
 	@test -e data/wad2art.json || $(PYTHON) tools/wad2art.py learn --data data
