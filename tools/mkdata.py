@@ -5,7 +5,7 @@ at: RLDATA/, RLLEV/, RLMUS/, SRC/) from the user's own copies of the games, so t
 repository can be shipped without any copyrighted game data.
 
   python3 tools/mkdata.py --fx3 "THE ULTIMATE DOOM.sfc" --wad DOOM.WAD \\
-          --out DIR [--src DIR] [--verify] [--cache DIR] [--compare REFDIR]
+          --out DIR [--src DIR] [--learn] [--verify] [--cache DIR] [--compare REFDIR]
 
 Inputs
   --fx3    THE ULTIMATE DOOM FX3 cartridge (4 MB) art, music, walls, levels, song/effect numbers
@@ -19,11 +19,13 @@ The data set: "The Ultimate DOOM" content for this port's engine (gamedata-fx3):
 music (datagen/fx3_art.py, fx3_music.py), walls/images/colour (fx3_gfx.py),
 RLLEV (fx3_convert_levels.py), RLMUS (datagen/rlmus.py), SRC tables, placeholders,
 menus (menus.py build, retouch).  For the WAD conversions it also gets a copy of the
-FX3 data and the rules learnt from the WAD:
+FX3 data and the conversion rules:
   RLLEV.fx3   wad2rl.json       levels               make wadlevels (wad2rl.py, wadlevels.py)
   RLGFX.fx3   wad2gfx.json      walls, sprites       make wadgfx    (wad2gfx.py)
   RLART.fx3   wad2art.json      title, menus, fonts  make wadart    (wad2art.py)
   RLMUSIC.fx3 wad2soundfx.json  sound effects        make wadsfx    (wad2soundfx.py)
+wad2rl.json, wad2gfx.json and wad2soundfx.json come from tools/rules (rules.py install: plus
+DOOM.WAD's palette and texture signatures); --learn learns them from the cartridge instead.
 
 --verify   also unpack every DeCompress blob / music chunk written with the FX3
            cartridge's own 65816 DeCompress under emulation (slow)
@@ -92,18 +94,27 @@ def build(a, fx3, verifier):
         '--wad', a.wad, '--out', out)
     log('[fx3] levels (fx3_convert_levels.py)')
     run(os.path.join(HERE, 'fx3_convert_levels.py'), a.fx3, os.path.join(out, 'RLLEV'))
-    # a copy of the FX3 levels (tools/wadlevels.py starts from it) and the FX3
-    # wall/floor numbers of the WAD's texture names (tools/wad2rl.py learn)
+    # copies of the cartridge's levels, graphics and sound data: the WAD conversions start
+    # from them, and make fx3levels / fx3gfx / fx3sfx put them back
     shutil.copytree(os.path.join(out, 'RLLEV'), os.path.join(out, 'RLLEV.fx3'))
+    from wad2gfx import GFXDIRS
+    for s in GFXDIRS:
+        shutil.copytree(os.path.join(out, 'RLDATA', s), os.path.join(out, 'RLGFX.fx3', s))
+    shutil.copytree(os.path.join(out, 'RLDATA', 'MUSIC'), os.path.join(out, 'RLMUSIC.fx3'))
+    if not a.learn:
+        # the WAD conversion rules that come with the source (tools/rules.py), with the
+        # palette and texture signatures of DOOM.WAD
+        log('[fx3] WAD conversion rules (tools/rules, rules.py install)')
+        run(os.path.join(HERE, 'rules.py'), 'install', '--data', out, '--wad', a.wad)
+        log('  (%.1fs)' % (time.time() - t))
+        return
+    # --learn: the rules learned again from the cartridge and DOOM.WAD (rules.py check
+    # compares them with tools/rules, rules.py export replaces those)
     log('[fx3] WAD -> FX3 texture tables (wad2rl.py learn)')
     run(os.path.join(HERE, 'wad2rl.py'), 'learn', '--wad', a.wad, '--ref', os.path.join(out, 'RLLEV'),
         '--out', os.path.join(out, 'wad2rl.json'))
-    # rules for walls/sprites from the WAD (tools/wad2gfx.py learn: wad2gfx.json,
-    # and RLGFX.fx3, a copy of the cartridge graphics); `make wadgfx WAD=...`
     log('[fx3] WAD -> SNES graphics rules (wad2gfx.py learn)')
     run(os.path.join(HERE, 'wad2gfx.py'), 'learn', '--data', out, '--wad', a.wad, '--src', a.src)
-    # rules for sound effects from the WAD (tools/wad2soundfx.py learn: wad2soundfx.json,
-    # and RLMUSIC.fx3, a copy of the cartridge sound data); `make wadsfx WAD=...`
     log('[fx3] WAD -> SNES sound effect rules (wad2soundfx.py learn)')
     run(os.path.join(HERE, 'wad2soundfx.py'), 'learn', '--data', out, '--wad', a.wad)
     log('  (%.1fs)' % (time.time() - t))
@@ -142,6 +153,8 @@ def main():
     ap.add_argument('--verify', action='store_true', help='65816-emulated check of every packed blob (slow)')
     ap.add_argument('--cache', help='cache directory for FX3 decompressions')
     ap.add_argument('--compare', help='reference data set to compare the result with')
+    ap.add_argument('--learn', action='store_true',
+                    help='learn the WAD conversion rules from the cartridge instead of tools/rules')
     a = ap.parse_args()
     t0 = time.time()
     fx3 = open(a.fx3, 'rb').read()

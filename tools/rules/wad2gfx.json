@@ -1,0 +1,2651 @@
+{
+"walls": [
+{
+"name": "SKY1",
+"wad": "SKY1",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 2.0,
+"sy": 1.0,
+"like": 0.837
+},
+{
+"name": "SKY2",
+"wad": "SKY2",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 2.0,
+"sy": 1.0,
+"like": 0.74
+},
+{
+"name": "SKY3",
+"wad": "SKY3",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 2.0,
+"sy": 1.0,
+"like": 0.823
+},
+{
+"name": "SKY4",
+"wad": "SKY4",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 2.0,
+"sy": 1.0,
+"like": 0.985
+},
+{
+"name": "BIGDOOR2",
+"wad": "BIGDOOR2",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.954
+},
+{
+"name": "BIGDOOR7",
+"wad": "BIGDOOR7",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.754
+},
+{
+"name": "BROWN1",
+"wad": "BROWN1",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.745
+},
+{
+"name": "COMP2",
+"wad": "COMP2",
+"w": 256,
+"h": 64,
+"dx": 0,
+"dy": 64,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.731
+},
+{
+"name": "COMPTILE",
+"wad": "COMPTILE",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.877
+},
+{
+"name": "COMPUTE1",
+"wad": "COMPUTE1",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.922
+},
+{
+"name": "DOOR3",
+"wad": "DOOR3",
+"w": 64,
+"h": 64,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.9
+},
+{
+"name": "DOORBLU",
+"wad": "DOORBLU",
+"w": 16,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 1.0
+},
+{
+"name": "DOORRED",
+"wad": "DOORRED",
+"w": 16,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 1.0
+},
+{
+"name": "DOORTRAK",
+"wad": "DOORTRAK",
+"w": 16,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.955
+},
+{
+"name": "DOORYEL",
+"wad": "DOORYEL",
+"w": 16,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 1.0
+},
+{
+"name": "EXITDOOR",
+"wad": "EXITDOOR",
+"w": 128,
+"h": 64,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.905
+},
+{
+"name": "EXITSIGN",
+"wad": "EXITSIGN",
+"w": 64,
+"h": 16,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.719
+},
+{
+"name": "FIREWALL",
+"wad": "FIREWALL",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.443
+},
+{
+"name": "GRAY4",
+"wad": "GRAY4",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.823
+},
+{
+"name": "GRAYBIG",
+"wad": "GRAYBIG",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.769
+},
+{
+"name": "GSTONE1",
+"wad": "GSTONE1",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.934
+},
+{
+"name": "GSTSATYR",
+"wad": "GSTSATYR",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.959
+},
+{
+"name": "GSTVINE2",
+"wad": "GSTVINE2",
+"w": 128,
+"h": 128,
+"dx": 128,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.742
+},
+{
+"name": "ICKWALL1",
+"wad": "ICKWALL1",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.879
+},
+{
+"name": "LITE5",
+"wad": "LITE5",
+"w": 16,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.945
+},
+{
+"name": "MARBFAC3",
+"wad": "MARBFAC3",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.699
+},
+{
+"name": "MARBLE3",
+"wad": "MARBLE3",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.607
+},
+{
+"name": "METAL1",
+"wad": "METAL1",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.775
+},
+{
+"name": "PIPE4",
+"wad": "PIPE4",
+"w": 256,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.499
+},
+{
+"name": "ROCKRED3",
+"wad": "ROCKRED3",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.854
+},
+{
+"name": "SKINLOW",
+"wad": "SKINLOW",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.289
+},
+{
+"name": "SKULWAL3",
+"wad": "SKULWAL3",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.943
+},
+{
+"name": "SLADWALL",
+"wad": "SLADWALL",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.708
+},
+{
+"name": "STARG2",
+"wad": "STARG2",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.853
+},
+{
+"name": "STARTAN2",
+"wad": "STARTAN2",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.917
+},
+{
+"name": "STARTAN3",
+"wad": "STARTAN3",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.98
+},
+{
+"name": "STEP2",
+"wad": "STEP2",
+"w": 32,
+"h": 64,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 1.0
+},
+{
+"name": "STEPLAD1",
+"wad": "STEPLAD1",
+"w": 64,
+"h": 16,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.904
+},
+{
+"name": "STONE2",
+"wad": "STONE2",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.615
+},
+{
+"name": "SUPPORT2",
+"wad": "SUPPORT2",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.834
+},
+{
+"name": "SW1BRN2",
+"wad": "SW1BRN2",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.936
+},
+{
+"name": "SW1BRNGN",
+"wad": "SW1BRNGN",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.862
+},
+{
+"name": "SW1GRAY",
+"wad": "SW1GRAY",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 64,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.826
+},
+{
+"name": "SW1EXIT",
+"wad": "SW1EXIT",
+"w": 32,
+"h": 64,
+"dx": 0,
+"dy": 12,
+"sx": 1.0,
+"sy": 0.875,
+"like": 0.644
+},
+{
+"name": "SW1GARG",
+"wad": "SW1GARG",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.72
+},
+{
+"name": "SW1GRAY",
+"wad": "SW1GRAY",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.826
+},
+{
+"name": "SW1GSTON",
+"wad": "SW1GSTON",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.903
+},
+{
+"name": "SW1HOT",
+"wad": "SW1HOT",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.941
+},
+{
+"name": "SW1PIPE",
+"wad": "SW1PIPE",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.748
+},
+{
+"name": "SW1SLAD",
+"wad": "SW1SLAD",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.719
+},
+{
+"name": "SW1WOOD",
+"wad": "SW1WOOD",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.965
+},
+{
+"name": "SW2BRN2",
+"wad": "SW2BRN2",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.941
+},
+{
+"name": "SW2BRNGN",
+"wad": "SW2BRNGN",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.766
+},
+{
+"name": "SW2GRAY",
+"wad": "SW2GRAY",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 64,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.856
+},
+{
+"name": "SW2EXIT",
+"wad": "SW2EXIT",
+"w": 32,
+"h": 64,
+"dx": 0,
+"dy": 12,
+"sx": 1.0,
+"sy": 0.875,
+"like": 0.661
+},
+{
+"name": "SW2GARG",
+"wad": "SW2GARG",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.655
+},
+{
+"name": "SW2GRAY",
+"wad": "SW2GRAY",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.856
+},
+{
+"name": "SW2GSTON",
+"wad": "SW2GSTON",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.958
+},
+{
+"name": "SW2HOT",
+"wad": "SW2HOT",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.903
+},
+{
+"name": "SW2PIPE",
+"wad": "SW2PIPE",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.831
+},
+{
+"name": "SW2SLAD",
+"wad": "SW2SLAD",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.72
+},
+{
+"name": "SW2WOOD",
+"wad": "SW2WOOD",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.851
+},
+{
+"name": "TEKWALL5",
+"wad": "TEKWALL5",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.541
+},
+{
+"name": "WOOD3",
+"wad": "WOOD3",
+"w": 128,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.658
+},
+{
+"name": "WOOD4",
+"wad": "WOOD4",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.777
+},
+{
+"name": "WOOD5",
+"wad": "WOOD5",
+"w": 128,
+"h": 128,
+"dx": 128,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.676
+},
+{
+"name": "WOODSKUL",
+"wad": "WOODSKUL",
+"w": 64,
+"h": 128,
+"dx": 0,
+"dy": 0,
+"sx": 1.0,
+"sy": 1.0,
+"like": 0.699
+}
+],
+"images": [
+{
+"name": "PLAYA1",
+"lump": "PLAYA1",
+"w": 41,
+"h": 56
+},
+{
+"name": "PLAYA3A7",
+"lump": "PLAYA3A7",
+"w": 42,
+"h": 53
+},
+{
+"name": "PLAYA5",
+"lump": "PLAYA5",
+"w": 36,
+"h": 50
+},
+{
+"name": "PLAYB1",
+"lump": "PLAYB1",
+"w": 37,
+"h": 56
+},
+{
+"name": "PLAYB3B7",
+"lump": "PLAYB3B7",
+"w": 36,
+"h": 55
+},
+{
+"name": "PLAYB5",
+"lump": "PLAYB5",
+"w": 35,
+"h": 54
+},
+{
+"name": "PLAYC1",
+"lump": "PLAYC1",
+"w": 38,
+"h": 56
+},
+{
+"name": "PLAYC3C7",
+"lump": "PLAYC3C7",
+"w": 38,
+"h": 54
+},
+{
+"name": "PLAYC5",
+"lump": "PLAYC5",
+"w": 34,
+"h": 54
+},
+{
+"name": "PLAYD1",
+"lump": "PLAYD1",
+"w": 40,
+"h": 55
+},
+{
+"name": "PLAYD3D7",
+"lump": "PLAYD3D7",
+"w": 34,
+"h": 54
+},
+{
+"name": "PLAYD5",
+"lump": "PLAYD5",
+"w": 35,
+"h": 54
+},
+{
+"name": "PLAYE1",
+"lump": "PLAYE1",
+"w": 26,
+"h": 56
+},
+{
+"name": "PLAYE3E7",
+"lump": "PLAYE3E7",
+"w": 51,
+"h": 53
+},
+{
+"name": "PLAYE5",
+"lump": "PLAYE5",
+"w": 26,
+"h": 51
+},
+{
+"name": "PLAYF1",
+"lump": "PLAYF1",
+"w": 26,
+"h": 56
+},
+{
+"name": "PLAYF3F7",
+"lump": "PLAYF3F7",
+"w": 52,
+"h": 53
+},
+{
+"name": "PLAYF5",
+"lump": "PLAYF5",
+"w": 24,
+"h": 51
+},
+{
+"name": "PLAYG1",
+"lump": "PLAYG1",
+"w": 39,
+"h": 55
+},
+{
+"name": "PLAYG3G7",
+"lump": "PLAYG3G7",
+"w": 43,
+"h": 55
+},
+{
+"name": "PLAYG5",
+"lump": "PLAYG5",
+"w": 34,
+"h": 54
+},
+{
+"name": "PLAYH0",
+"lump": "PLAYH0",
+"w": 44,
+"h": 50
+},
+{
+"name": "PLAYI0",
+"lump": "PLAYI0",
+"w": 35,
+"h": 43
+},
+{
+"name": "PLAYJ0",
+"lump": "PLAYJ0",
+"w": 36,
+"h": 46
+},
+{
+"name": "PLAYK0",
+"lump": "PLAYK0",
+"w": 41,
+"h": 38
+},
+{
+"name": "PLAYN0",
+"lump": "PLAYN0",
+"w": 51,
+"h": 14
+},
+{
+"name": "POSSA1",
+"lump": "POSSA1",
+"w": 41,
+"h": 55
+},
+{
+"name": "POSSB1",
+"lump": "POSSB1",
+"w": 37,
+"h": 55
+},
+{
+"name": "POSSC1",
+"lump": "POSSC1",
+"w": 38,
+"h": 55
+},
+{
+"name": "POSSD1",
+"lump": "POSSD1",
+"w": 40,
+"h": 55
+},
+{
+"name": "POSSE1",
+"lump": "POSSE1",
+"w": 26,
+"h": 55
+},
+{
+"name": "POSSF1",
+"lump": "POSSF1",
+"w": 27,
+"h": 55
+},
+{
+"name": "POSSG1",
+"lump": "POSSG1",
+"w": 39,
+"h": 55
+},
+{
+"name": "POSSH0",
+"lump": "POSSH0",
+"w": 39,
+"h": 55
+},
+{
+"name": "POSSI0",
+"lump": "POSSI0",
+"w": 35,
+"h": 46
+},
+{
+"name": "POSSJ0",
+"lump": "POSSJ0",
+"w": 43,
+"h": 34
+},
+{
+"name": "POSSK0",
+"lump": "POSSK0",
+"w": 48,
+"h": 27
+},
+{
+"name": "POSSL0",
+"lump": "POSSL0",
+"w": 47,
+"h": 17
+},
+{
+"name": "POSSU0",
+"lump": "POSSU0",
+"w": 57,
+"h": 21
+},
+{
+"name": "SPOSA1",
+"lump": "SPOSA1",
+"w": 36,
+"h": 55
+},
+{
+"name": "SPOSB1",
+"lump": "SPOSB1",
+"w": 35,
+"h": 55
+},
+{
+"name": "SPOSC1",
+"lump": "SPOSC1",
+"w": 32,
+"h": 55
+},
+{
+"name": "SPOSD1",
+"lump": "SPOSD1",
+"w": 34,
+"h": 55
+},
+{
+"name": "SPOSE1",
+"lump": "SPOSE1",
+"w": 26,
+"h": 55
+},
+{
+"name": "SPOSF1",
+"lump": "SPOSF1",
+"w": 27,
+"h": 55
+},
+{
+"name": "SPOSG1",
+"lump": "SPOSG1",
+"w": 31,
+"h": 55
+},
+{
+"name": "SPOSH0",
+"lump": "SPOSH0",
+"w": 33,
+"h": 60
+},
+{
+"name": "SPOSI0",
+"lump": "SPOSI0",
+"w": 35,
+"h": 50
+},
+{
+"name": "SPOSJ0",
+"lump": "SPOSJ0",
+"w": 42,
+"h": 35
+},
+{
+"name": "SPOSK0",
+"lump": "SPOSK0",
+"w": 48,
+"h": 27
+},
+{
+"name": "SPOSL0",
+"lump": "SPOSL0",
+"w": 52,
+"h": 17
+},
+{
+"name": "TROOA1",
+"lump": "TROOA1",
+"w": 41,
+"h": 57
+},
+{
+"name": "TROOB1",
+"lump": "TROOB1",
+"w": 39,
+"h": 56
+},
+{
+"name": "TROOC1",
+"lump": "TROOC1",
+"w": 39,
+"h": 60
+},
+{
+"name": "TROOD1",
+"lump": "TROOD1",
+"w": 37,
+"h": 57
+},
+{
+"name": "TROOE1",
+"lump": "TROOE1",
+"w": 49,
+"h": 60
+},
+{
+"name": "TROOF1",
+"lump": "TROOF1",
+"w": 44,
+"h": 55
+},
+{
+"name": "TROOG1",
+"lump": "TROOG1",
+"w": 32,
+"h": 55
+},
+{
+"name": "TROOH1",
+"lump": "TROOH1",
+"w": 41,
+"h": 55
+},
+{
+"name": "TROOI0",
+"lump": "TROOI0",
+"w": 42,
+"h": 62
+},
+{
+"name": "TROOJ0",
+"lump": "TROOJ0",
+"w": 41,
+"h": 59
+},
+{
+"name": "TROOK0",
+"lump": "TROOK0",
+"w": 40,
+"h": 54
+},
+{
+"name": "TROOL0",
+"lump": "TROOL0",
+"w": 48,
+"h": 46
+},
+{
+"name": "TROOM0",
+"lump": "TROOM0",
+"w": 58,
+"h": 22
+},
+{
+"name": "TROOU0",
+"lump": "TROOU0",
+"w": 56,
+"h": 18
+},
+{
+"name": "SARGA1",
+"lump": "SARGA1",
+"w": 40,
+"h": 56
+},
+{
+"name": "SARGB1",
+"lump": "SARGB1",
+"w": 43,
+"h": 58
+},
+{
+"name": "SARGC1",
+"lump": "SARGC1",
+"w": 40,
+"h": 55
+},
+{
+"name": "SARGD1",
+"lump": "SARGD1",
+"w": 43,
+"h": 58
+},
+{
+"name": "SARGE1",
+"lump": "SARGE1",
+"w": 44,
+"h": 55
+},
+{
+"name": "SARGF1",
+"lump": "SARGF1",
+"w": 44,
+"h": 55
+},
+{
+"name": "SARGG1",
+"lump": "SARGG1",
+"w": 44,
+"h": 55
+},
+{
+"name": "SARGH1",
+"lump": "SARGH1",
+"w": 39,
+"h": 55
+},
+{
+"name": "SARGI0",
+"lump": "SARGI0",
+"w": 54,
+"h": 56
+},
+{
+"name": "SARGK0",
+"lump": "SARGK0",
+"w": 52,
+"h": 53
+},
+{
+"name": "SARGL0",
+"lump": "SARGL0",
+"w": 62,
+"h": 57
+},
+{
+"name": "SARGN0",
+"lump": "SARGN0",
+"w": 64,
+"h": 32
+},
+{
+"name": "HEADA1",
+"lump": "HEADA1",
+"w": 56,
+"h": 59
+},
+{
+"name": "HEADB1",
+"lump": "HEADB1",
+"w": 56,
+"h": 56
+},
+{
+"name": "HEADC1",
+"lump": "HEADC1",
+"w": 56,
+"h": 62
+},
+{
+"name": "HEADD1",
+"lump": "HEADD1",
+"w": 56,
+"h": 64
+},
+{
+"name": "HEADE1",
+"lump": "HEADE1",
+"w": 56,
+"h": 60
+},
+{
+"name": "HEADF1",
+"lump": "HEADF1",
+"w": 56,
+"h": 60
+},
+{
+"name": "HEADH0",
+"lump": "HEADH0",
+"w": 56,
+"h": 60
+},
+{
+"name": "HEADJ0",
+"lump": "HEADJ0",
+"w": 61,
+"h": 70
+},
+{
+"name": "HEADK0",
+"lump": "HEADK0",
+"w": 62,
+"h": 59
+},
+{
+"name": "HEADL0",
+"lump": "HEADL0",
+"w": 68,
+"h": 43
+},
+{
+"name": "SKULA1",
+"lump": "SKULA1",
+"w": 44,
+"h": 47
+},
+{
+"name": "SKULB1",
+"lump": "SKULB1",
+"w": 44,
+"h": 46
+},
+{
+"name": "SKULC1",
+"lump": "SKULC1",
+"w": 44,
+"h": 44
+},
+{
+"name": "SKULD1",
+"lump": "SKULD1",
+"w": 44,
+"h": 44
+},
+{
+"name": "SKULE1",
+"lump": "SKULE1",
+"w": 34,
+"h": 51
+},
+{
+"name": "SKULF0",
+"lump": "SKULF0",
+"w": 34,
+"h": 51
+},
+{
+"name": "SKULH0",
+"lump": "SKULH0",
+"w": 45,
+"h": 48
+},
+{
+"name": "SKULI0",
+"lump": "SKULI0",
+"w": 68,
+"h": 60
+},
+{
+"name": "BOSSA1",
+"lump": "BOSSA1",
+"w": 41,
+"h": 73
+},
+{
+"name": "BOSSB1",
+"lump": "BOSSB1",
+"w": 49,
+"h": 74
+},
+{
+"name": "BOSSC1",
+"lump": "BOSSC1",
+"w": 41,
+"h": 73
+},
+{
+"name": "BOSSD1",
+"lump": "BOSSD1",
+"w": 49,
+"h": 74
+},
+{
+"name": "BOSSE1",
+"lump": "BOSSE1",
+"w": 65,
+"h": 70
+},
+{
+"name": "BOSSF1",
+"lump": "BOSSF1",
+"w": 69,
+"h": 70
+},
+{
+"name": "BOSSG1",
+"lump": "BOSSG1",
+"w": 53,
+"h": 64
+},
+{
+"name": "BOSSH1",
+"lump": "BOSSH1",
+"w": 50,
+"h": 72
+},
+{
+"name": "BOSSI0",
+"lump": "BOSSI0",
+"w": 48,
+"h": 73
+},
+{
+"name": "BOSSJ0",
+"lump": "BOSSJ0",
+"w": 55,
+"h": 64
+},
+{
+"name": "BOSSK0",
+"lump": "BOSSK0",
+"w": 56,
+"h": 54
+},
+{
+"name": "BOSSL0",
+"lump": "BOSSL0",
+"w": 59,
+"h": 36
+},
+{
+"name": "BOSSM0",
+"lump": "BOSSM0",
+"w": 60,
+"h": 30
+},
+{
+"name": "CYBRA1",
+"lump": "CYBRA1",
+"w": 68,
+"h": 94
+},
+{
+"name": "CYBRB1",
+"lump": "CYBRB1",
+"w": 71,
+"h": 95
+},
+{
+"name": "CYBRC1",
+"lump": "CYBRC1",
+"w": 68,
+"h": 96
+},
+{
+"name": "CYBRD1",
+"lump": "CYBRD1",
+"w": 71,
+"h": 95
+},
+{
+"name": "CYBRE1",
+"lump": "CYBRE1",
+"w": 72,
+"h": 96
+},
+{
+"name": "CYBRF1",
+"lump": "CYBRF1",
+"w": 83,
+"h": 96
+},
+{
+"name": "CYBRG1",
+"lump": "CYBRG1",
+"w": 102,
+"h": 96
+},
+{
+"name": "CYBRI0",
+"lump": "CYBRI0",
+"w": 97,
+"h": 99
+},
+{
+"name": "CYBRJ0",
+"lump": "CYBRJ0",
+"w": 86,
+"h": 102
+},
+{
+"name": "CYBRK0",
+"lump": "CYBRK0",
+"w": 99,
+"h": 103
+},
+{
+"name": "CYBRO0",
+"lump": "CYBRO0",
+"w": 125,
+"h": 120
+},
+{
+"name": "CYBRP0",
+"lump": "CYBRP0",
+"w": 102,
+"h": 16
+},
+{
+"name": "SPIDA1",
+"lump": "SPIDA1D1",
+"w": 173,
+"h": 88
+},
+{
+"name": "SPIDB1",
+"lump": "SPIDB1E1",
+"w": 193,
+"h": 87
+},
+{
+"name": "SPIDC1",
+"lump": "SPIDC1F1",
+"w": 193,
+"h": 87
+},
+{
+"name": "SPIDG1",
+"lump": "SPIDG1",
+"w": 173,
+"h": 88
+},
+{
+"name": "SPIDH1",
+"lump": "SPIDH1",
+"w": 173,
+"h": 88
+},
+{
+"name": "SPIDI1",
+"lump": "SPIDI1",
+"w": 175,
+"h": 85
+},
+{
+"name": "SPIDK0",
+"lump": "SPIDK0",
+"w": 166,
+"h": 76
+},
+{
+"name": "SPIDM0",
+"lump": "SPIDM0",
+"w": 160,
+"h": 56
+},
+{
+"name": "SPIDO0",
+"lump": "SPIDO0",
+"w": 166,
+"h": 48
+},
+{
+"name": "SPIDS0",
+"lump": "SPIDS0",
+"w": 161,
+"h": 23
+},
+{
+"name": "SHOTA0",
+"lump": "SHOTA0",
+"w": 63,
+"h": 12
+},
+{
+"name": "CSAWA0",
+"lump": "CSAWA0",
+"w": 62,
+"h": 24
+},
+{
+"name": "MGUNA0",
+"lump": "MGUNA0",
+"w": 54,
+"h": 16
+},
+{
+"name": "LAUNA0",
+"lump": "LAUNA0",
+"w": 62,
+"h": 16
+},
+{
+"name": "PLASA0",
+"lump": "PLASA0",
+"w": 54,
+"h": 16
+},
+{
+"name": "BFUGA0",
+"lump": "BFUGA0",
+"w": 61,
+"h": 36
+},
+{
+"name": "RKEYA0",
+"lump": "RKEYA0",
+"w": 14,
+"h": 16
+},
+{
+"name": "BKEYA0",
+"lump": "BKEYA0",
+"w": 14,
+"h": 16
+},
+{
+"name": "YKEYA0",
+"lump": "YKEYA0",
+"w": 14,
+"h": 16
+},
+{
+"name": "RSKUA0",
+"lump": "RSKUA0",
+"w": 13,
+"h": 16
+},
+{
+"name": "BSKUA0",
+"lump": "BSKUA0",
+"w": 13,
+"h": 16
+},
+{
+"name": "YSKUA0",
+"lump": "YSKUA0",
+"w": 13,
+"h": 16
+},
+{
+"name": "BPAKA0",
+"lump": "BPAKA0",
+"w": 22,
+"h": 29
+},
+{
+"name": "CLIPA0",
+"lump": "CLIPA0",
+"w": 9,
+"h": 11
+},
+{
+"name": "AMMOA0",
+"lump": "AMMOA0",
+"w": 28,
+"h": 16
+},
+{
+"name": "SHELA0",
+"lump": "SHELA0",
+"w": 15,
+"h": 7
+},
+{
+"name": "SBOXA0",
+"lump": "SBOXA0",
+"w": 32,
+"h": 12
+},
+{
+"name": "ROCKA0",
+"lump": "ROCKA0",
+"w": 12,
+"h": 27
+},
+{
+"name": "BROKA0",
+"lump": "BROKA0",
+"w": 54,
+"h": 21
+},
+{
+"name": "CELLA0",
+"lump": "CELLA0",
+"w": 17,
+"h": 12
+},
+{
+"name": "CELPA0",
+"lump": "CELPA0",
+"w": 32,
+"h": 21
+},
+{
+"name": "STIMA0",
+"lump": "STIMA0",
+"w": 14,
+"h": 15
+},
+{
+"name": "MEDIA0",
+"lump": "MEDIA0",
+"w": 28,
+"h": 19
+},
+{
+"name": "BON1B0",
+"lump": "BON1B0",
+"w": 14,
+"h": 18
+},
+{
+"name": "BON1C0",
+"lump": "BON1C0",
+"w": 14,
+"h": 18
+},
+{
+"name": "BON1D0",
+"lump": "BON1D0",
+"w": 14,
+"h": 18
+},
+{
+"name": "BON1C0",
+"lump": "BON1C0",
+"w": 14,
+"h": 18
+},
+{
+"name": "BON2A0",
+"lump": "BON2A0",
+"w": 16,
+"h": 15
+},
+{
+"name": "BON2B0",
+"lump": "BON2B0",
+"w": 16,
+"h": 15
+},
+{
+"name": "BON2D0",
+"lump": "BON2D0",
+"w": 16,
+"h": 15
+},
+{
+"name": "BON2B0",
+"lump": "BON2B0",
+"w": 16,
+"h": 15
+},
+{
+"name": "ARM1A0",
+"lump": "ARM1A0",
+"w": 31,
+"h": 17
+},
+{
+"name": "ARM2A0",
+"lump": "ARM2A0",
+"w": 31,
+"h": 17
+},
+{
+"name": "SOULA0",
+"lump": "SOULA0",
+"w": 25,
+"h": 25
+},
+{
+"name": "SOULC0",
+"lump": "SOULC0",
+"w": 25,
+"h": 25
+},
+{
+"name": "SOULD0",
+"lump": "SOULD0",
+"w": 25,
+"h": 25
+},
+{
+"name": "SOULC0",
+"lump": "SOULC0",
+"w": 25,
+"h": 25
+},
+{
+"name": "PINVA0",
+"lump": "PINVA0",
+"w": 25,
+"h": 25
+},
+{
+"name": "PINVC0",
+"lump": "PINVC0",
+"w": 25,
+"h": 25
+},
+{
+"name": "PINVD0",
+"lump": "PINVD0",
+"w": 25,
+"h": 25
+},
+{
+"name": "PINVC0",
+"lump": "PINVC0",
+"w": 25,
+"h": 25
+},
+{
+"name": "PSTRA0",
+"lump": "PSTRA0",
+"w": 28,
+"h": 19
+},
+{
+"name": "PINSA0",
+"lump": "PINSA0",
+"w": 25,
+"h": 25
+},
+{
+"name": "PINSC0",
+"lump": "PINSC0",
+"w": 25,
+"h": 25
+},
+{
+"name": "PINSD0",
+"lump": "PINSD0",
+"w": 25,
+"h": 25
+},
+{
+"name": "PINSC0",
+"lump": "PINSC0",
+"w": 25,
+"h": 25
+},
+{
+"name": "SUITA0",
+"lump": "SUITA0",
+"w": 24,
+"h": 47
+},
+{
+"name": "PMAPA0",
+"lump": "PMAPA0",
+"w": 28,
+"h": 27
+},
+{
+"name": "PMAPB0",
+"lump": "PMAPB0",
+"w": 28,
+"h": 27
+},
+{
+"name": "PMAPC0",
+"lump": "PMAPC0",
+"w": 28,
+"h": 27
+},
+{
+"name": "PMAPB0",
+"lump": "PMAPB0",
+"w": 28,
+"h": 27
+},
+{
+"name": "PVISA0",
+"lump": "PVISA0",
+"w": 28,
+"h": 13
+},
+{
+"name": "PVISB0",
+"lump": "PVISB0",
+"w": 28,
+"h": 13
+},
+{
+"name": "BAR1A0",
+"lump": "BAR1A0",
+"w": 23,
+"h": 32
+},
+{
+"name": "BAR1B0",
+"lump": "BAR1B0",
+"w": 23,
+"h": 32
+},
+{
+"name": "BEXPC0",
+"lump": "BEXPC0",
+"w": 40,
+"h": 36
+},
+{
+"name": "BEXPD0",
+"lump": "BEXPD0",
+"w": 56,
+"h": 50
+},
+{
+"name": "BEXPE0",
+"lump": "BEXPE0",
+"w": 60,
+"h": 53
+},
+{
+"name": "COLUA0",
+"lump": "COLUA0",
+"w": 23,
+"h": 48
+},
+{
+"name": "CBRAA0",
+"lump": "CBRAA0",
+"w": 29,
+"h": 61
+},
+{
+"name": "ELECA0",
+"lump": "ELECA0",
+"w": 38,
+"h": 128
+},
+{
+"name": "FSKUA0",
+"lump": "FSKUA0",
+"w": 32,
+"h": 35
+},
+{
+"name": "FSKUB0",
+"lump": "FSKUB0",
+"w": 32,
+"h": 35
+},
+{
+"name": "FSKUC0",
+"lump": "FSKUC0",
+"w": 32,
+"h": 35
+},
+{
+"name": "FSKUB0",
+"lump": "FSKUB0",
+"w": 32,
+"h": 35
+},
+{
+"name": "TRE1A0",
+"lump": "TRE1A0",
+"w": 51,
+"h": 70
+},
+{
+"name": "CANDA0",
+"lump": "CANDA0",
+"w": 15,
+"h": 15
+},
+{
+"name": "TREDA0",
+"lump": "TREDA0",
+"w": 26,
+"h": 96
+},
+{
+"name": "TREDB0",
+"lump": "TREDB0",
+"w": 26,
+"h": 91
+},
+{
+"name": "TREDC0",
+"lump": "TREDC0",
+"w": 26,
+"h": 91
+},
+{
+"name": "TREDD0",
+"lump": "TREDD0",
+"w": 26,
+"h": 97
+},
+{
+"name": "COL2A0",
+"lump": "COL2A0",
+"w": 35,
+"h": 40
+},
+{
+"name": "SMITA0",
+"lump": "SMITA0",
+"w": 47,
+"h": 47
+},
+{
+"name": "POL4A0",
+"lump": "POL4A0",
+"w": 22,
+"h": 55
+},
+{
+"name": "SMBTA0",
+"lump": "SMBTA0",
+"w": 17,
+"h": 73
+},
+{
+"name": "SMBTB0",
+"lump": "SMBTB0",
+"w": 17,
+"h": 68
+},
+{
+"name": "SMBTC0",
+"lump": "SMBTC0",
+"w": 16,
+"h": 68
+},
+{
+"name": "SMBTD0",
+"lump": "SMBTD0",
+"w": 17,
+"h": 74
+},
+{
+"name": "BAL1A0",
+"lump": "BAL1A0",
+"w": 15,
+"h": 15
+},
+{
+"name": "BAL1B0",
+"lump": "BAL1B0",
+"w": 15,
+"h": 15
+},
+{
+"name": "BAL1C0",
+"lump": "BAL1C0",
+"w": 37,
+"h": 35
+},
+{
+"name": "BAL1D0",
+"lump": "BAL1D0",
+"w": 43,
+"h": 39
+},
+{
+"name": "BAL1E0",
+"lump": "BAL1E0",
+"w": 51,
+"h": 44
+},
+{
+"name": "BAL2A0",
+"lump": "BAL2A0",
+"w": 16,
+"h": 16
+},
+{
+"name": "BAL2B0",
+"lump": "BAL2B0",
+"w": 15,
+"h": 15
+},
+{
+"name": "BAL2C0",
+"lump": "BAL2C0",
+"w": 46,
+"h": 50
+},
+{
+"name": "BAL2D0",
+"lump": "BAL2D0",
+"w": 51,
+"h": 42
+},
+{
+"name": "BAL2E0",
+"lump": "BAL2E0",
+"w": 53,
+"h": 47
+},
+{
+"name": "BAL7A1A5",
+"lump": "BAL7A1A5",
+"w": 19,
+"h": 16
+},
+{
+"name": "BAL7B1B5",
+"lump": "BAL7B1B5",
+"w": 20,
+"h": 16
+},
+{
+"name": "BAL7C0",
+"lump": "BAL7C0",
+"w": 33,
+"h": 33
+},
+{
+"name": "BAL7D0",
+"lump": "BAL7D0",
+"w": 41,
+"h": 36
+},
+{
+"name": "BAL7E0",
+"lump": "BAL7E0",
+"w": 45,
+"h": 40
+},
+{
+"name": "MISLA5",
+"lump": "MISLA5",
+"w": 15,
+"h": 14
+},
+{
+"name": "MISLB0",
+"lump": "MISLB0",
+"w": 49,
+"h": 38
+},
+{
+"name": "MISLC0",
+"lump": "MISLC0",
+"w": 65,
+"h": 49
+},
+{
+"name": "MISLD0",
+"lump": "MISLD0",
+"w": 81,
+"h": 69
+},
+{
+"name": "PLSEA0",
+"lump": "PLSEA0",
+"w": 23,
+"h": 23
+},
+{
+"name": "PLSEB0",
+"lump": "PLSEB0",
+"w": 39,
+"h": 42
+},
+{
+"name": "PLSEC0",
+"lump": "PLSEC0",
+"w": 34,
+"h": 35
+},
+{
+"name": "PLSED0",
+"lump": "PLSED0",
+"w": 32,
+"h": 29
+},
+{
+"name": "PLSEE0",
+"lump": "PLSEE0",
+"w": 7,
+"h": 7
+}
+],
+"palette_walls": [
+129,
+145,
+193,
+194,
+1,
+161,
+162,
+146,
+146,
+195,
+196,
+178,
+224,
+103,
+49,
+226,
+212,
+17,
+18,
+19,
+20,
+21,
+213,
+23,
+24,
+25,
+214,
+27,
+28,
+29,
+30,
+31,
+32,
+33,
+34,
+35,
+36,
+37,
+38,
+130,
+40,
+41,
+42,
+43,
+44,
+63,
+46,
+96,
+216,
+59,
+12,
+51,
+52,
+53,
+245,
+131,
+56,
+57,
+147,
+132,
+60,
+61,
+197,
+148,
+133,
+65,
+199,
+149,
+134,
+69,
+200,
+150,
+72,
+135,
+136,
+151,
+76,
+77,
+183,
+137,
+164,
+184,
+152,
+138,
+165,
+2,
+3,
+185,
+166,
+202,
+4,
+167,
+5,
+153,
+6,
+186,
+10,
+204,
+7,
+205,
+169,
+154,
+170,
+8,
+171,
+140,
+9,
+172,
+155,
+188,
+11,
+156,
+112,
+113,
+249,
+115,
+116,
+250,
+118,
+251,
+252,
+121,
+253,
+123,
+124,
+125,
+126,
+220,
+128,
+255,
+179,
+83,
+14,
+64,
+163,
+73,
+182,
+79,
+102,
+187,
+248,
+159,
+174,
+176,
+189,
+94,
+241,
+58,
+198,
+180,
+181,
+158,
+15,
+141,
+101,
+108,
+111,
+50,
+75,
+13,
+160,
+210,
+86,
+246,
+80,
+84,
+88,
+91,
+1,
+100,
+157,
+104,
+107,
+219,
+231,
+239,
+237,
+225,
+211,
+39,
+229,
+217,
+201,
+142,
+232,
+218,
+234,
+203,
+235,
+236,
+63,
+96,
+206,
+93,
+90,
+54,
+92,
+228,
+190,
+66,
+230,
+74,
+233,
+191,
+97,
+99,
+192,
+68,
+1,
+82,
+106,
+208,
+16,
+244,
+26,
+45,
+48,
+71,
+87,
+209,
+127,
+95,
+254,
+78,
+1,
+85,
+243,
+47,
+62,
+67,
+70,
+247,
+81,
+89,
+221,
+109,
+222,
+143,
+240,
+223,
+68,
+98,
+114,
+110,
+22,
+55,
+207,
+129,
+105,
+242,
+117,
+107,
+120,
+122,
+144,
+64
+],
+"palette_sprites": [
+129,
+145,
+193,
+194,
+1,
+161,
+162,
+146,
+146,
+195,
+196,
+178,
+224,
+103,
+49,
+226,
+212,
+17,
+18,
+19,
+20,
+21,
+213,
+23,
+24,
+25,
+214,
+27,
+28,
+29,
+30,
+31,
+32,
+33,
+34,
+35,
+36,
+37,
+38,
+130,
+40,
+41,
+42,
+43,
+44,
+63,
+46,
+96,
+216,
+59,
+12,
+51,
+52,
+53,
+245,
+131,
+56,
+57,
+147,
+132,
+60,
+61,
+197,
+148,
+133,
+65,
+199,
+149,
+134,
+69,
+200,
+150,
+72,
+135,
+136,
+151,
+76,
+77,
+183,
+137,
+164,
+184,
+152,
+138,
+165,
+2,
+3,
+185,
+166,
+202,
+4,
+167,
+5,
+153,
+6,
+186,
+10,
+204,
+7,
+205,
+169,
+154,
+170,
+8,
+171,
+140,
+9,
+172,
+155,
+188,
+11,
+156,
+112,
+113,
+249,
+115,
+116,
+250,
+118,
+251,
+252,
+121,
+253,
+123,
+124,
+125,
+126,
+220,
+128,
+255,
+179,
+83,
+14,
+64,
+163,
+73,
+182,
+79,
+102,
+187,
+248,
+159,
+174,
+176,
+189,
+94,
+241,
+58,
+198,
+180,
+181,
+158,
+15,
+141,
+101,
+108,
+111,
+50,
+75,
+13,
+160,
+210,
+86,
+246,
+80,
+84,
+88,
+91,
+1,
+100,
+157,
+104,
+107,
+219,
+231,
+239,
+237,
+225,
+211,
+39,
+229,
+217,
+201,
+142,
+232,
+218,
+234,
+203,
+235,
+236,
+63,
+96,
+206,
+93,
+90,
+54,
+92,
+228,
+190,
+66,
+230,
+74,
+233,
+191,
+97,
+99,
+192,
+68,
+1,
+82,
+106,
+208,
+16,
+244,
+26,
+45,
+48,
+71,
+87,
+209,
+127,
+95,
+254,
+78,
+1,
+85,
+243,
+47,
+62,
+67,
+70,
+247,
+81,
+89,
+221,
+109,
+222,
+143,
+240,
+223,
+68,
+98,
+114,
+110,
+22,
+55,
+207,
+129,
+105,
+242,
+117,
+120,
+120,
+122,
+144,
+64
+]
+}
