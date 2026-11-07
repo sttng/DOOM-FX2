@@ -345,18 +345,7 @@ for your own use.
 
 ## Speed
 
-Frame times at the real Super FX clock (MesenCE, Hurt Me Plenty, the
-`test/det_suite.sh` input with `dettest.py --gsuclock 100`, 600 rendered
-frames):
-
-| level | VBlanks per frame | fps |
-|---|---|---|
-| E1M1 | 3.37 | 17.8 |
-| E3M5 | 3.44 | 17.5 |
-| E4M2 | 5.37 | 11.2 |
-| E4M8 | 5.52 | 10.9 |
-
-What makes the renderer faster than the original's:
+What makes the renderer hopefully faster than before:
 
 * **Wall band buffer:** walls are drawn 8 pixels wide into a buffer and
   plotted row by row, so the pixel cache never reads back the screen.
