@@ -93,6 +93,18 @@ Converting maps from WADs is done with
 do not fit (*Node rebuilds* below): the DOOM II, TNT and Plutonia sets need it.
 Without it, such a map keeps the cartridge's version or is left out.
 
+### What is taken from the FX3 rom cartridge:
+
+- Art the WAD doesn’t have in SNES form: for example the status bar and face, the menu skull,
+  the skill and episode menus, the message and text fonts, and the palette. The Pause, Save
+  and Load menus are rebuilt but from the cartridge’s lettering.
+- Sound: the SPC700 music driver, the instrument library and the cartridge’s songs, plus the
+  sound-effect waves and the song and effect numbers. The WAD-music converter plays the converted
+  songs with these cartridge instruments.
+- Walls, sprites and floor colours already cut to SNES size, in the engine’s 252 wall slots and 232 sprites.
+- The 36 Ultimate DOOM levels in the engine’s format. DOOM-FX uses them directly.
+  They’re also the fallback when a map converted from a WAD doesn’t fit.
+
 ```sh
 make data FX3="THE ULTIMATE DOOM.sfc" WAD=DOOM.WAD   # -> gamedata-fx3/, linked as data/
 make                                    # -> build/doom.sfc, build/doom.sym
