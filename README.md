@@ -15,7 +15,7 @@ from their WADs, and a 2 MB ROM of the shareware DOOM wad.
 > own files: your FX3 *The Ultimate DOOM* cartridge dump and `DOOM.WAD` (v1.9);
 > the DOOM II / Final DOOM sets use your WADs.
 
-## Compared with the original SNES DOOM
+## Compared with the original 1995 SNES DOOM
 
 * **All 36 levels** of The Ultimate DOOM (the original left out E1M6, E2M2, E2M5,
   E2M7 and E3M5) with Episode 4, its intermission and end texts, and one sky
