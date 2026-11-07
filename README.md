@@ -81,10 +81,13 @@ from their WADs, and a 2 MB ROM of shareware DOOM wad.
 
 ## Build
 
-Requirements: [`asar` 1.91](https://github.com/RPGHacker/asar), Python 3.8+ with Pillow and numpy (scipy for
-`wad2soundfx.py`). 
+Requirements: 
+- [`asar` 1.91](https://github.com/RPGHacker/asar)
+- Python 3.8+ with Pillow and numpy (scipy for`wad2soundfx.py`)
+- [ZokumBSP](https://github.com/zokum-no/zokumbsp) (used commit`22af6de`)
+- FX3 "THE ULTIMATE DOOM.sfc" rom dump
 
-Converting maps from WADs also needs
+Converting maps from WADs is done with
 [ZokumBSP](https://github.com/zokum-no/zokumbsp) (used commit
 `22af6de`; `ZOKUMBSP=<path>` or `$ZOKUMBSP`) to rebuild the nodes of maps that
 do not fit (*Node rebuilds* below): the DOOM II, TNT and Plutonia sets need it.
