@@ -11,8 +11,7 @@ from their WADs, and 2 MB ROMs of shareware DOOM.
 >  There is some retouched menu art in `tools/menus/` and the shareware
 > title picture `tools/title/TITLE.png`. The build makes the rest from your
 > own files: your *The Ultimate DOOM* cartridge dump and `DOOM.WAD` (v1.9);
-> the DOOM II / Final DOOM sets use your WADs. Do not distribute the
-> generated `data/` or the ROMs.
+> the DOOM II / Final DOOM sets use your WADs.
 
 ## Compared with the original SNES DOOM
 
@@ -20,15 +19,12 @@ from their WADs, and 2 MB ROMs of shareware DOOM.
   E2M7 and E3M5) with Episode 4, its intermission and end texts, and one sky
   per episode.
 * **The Spectre**, drawn as a dark see-through shadow.
-* **Start screen** in place of the legal page, while the sound driver loads:
-  the PC game's start-up log (title bar, `adding doom.wad`, the shareware /
-  do-not-distribute notice) for the WAD the data set was made from, in the
+* **Start screen** the PC game's inspired start-up log for the WAD it was made from
+  (title bar, `adding doom.wad`, the shareware / do-not-distribute notice), in the
   system text font (`tools/startscreen.py`, `startscreen.asm`).
-* **Screen melt** when the title is left, as on The Ultimate DOOM cartridge
-  and the PC, in place of the fade to black: 8-pixel columns slide down
-  after random delays (up to 19 frames, about 1.2 s in all). The title
-  switches to Mode 2, whose offset-per-tile table gives each column its own
-  vertical scroll; no Super FX time (`title.asm`).
+* **Screen melt** when the title is left, as on The Ultimate DOOM cartridge,
+  in place of the fade to black: 8-pixel columns slide down
+  after random delays (`title.asm`).
 * **Title menu** as on The Ultimate DOOM cartridge, in every game: a button on
   the title opens New Game / Load Game over the darkened title (the cartridge:
   New Game / Enter Code). New Game leads to the skill menu, then (DOOM games)
@@ -65,33 +61,21 @@ from their WADs, and 2 MB ROMs of shareware DOOM.
   * Impassible two-sided lines (windows, fences) block the player and
     monsters from both sides; the original checked them only from the right side.
     Projectiles still pass, as on the PC.
-  * The player no longer gets hung up on walls: when a move and its slide
+  * The player gets less hung up on walls: when a move and its slide
     along the wall are both blocked (door frames, steps, walls made of
     several lines), the move is tried along X only and Y only, as the PC's
     "stairstep" does; the original stopped the player there.
   * Walking speed no longer drops at 15 fps (the "nearly stopped" check
     stopped a moving player every frame).
-  * No black frames: a top or bottom IRQ that comes a few lines late (an
-    IRQ handler ran into its line) is still taken as one, and the copy of
-    a screen third to WRAM waits until the IRQ due has come (it took up to
-    66 lines in an IRQ that had come 2 lines early).
-  * No hangs in huge views: the renderer's per-frame lists have overflow
+  * Less hangs in huge views: the renderer's per-frame lists have overflow
     checks (*Engine limits*).
-  * The Cyberdemon's death outside E2M8 no longer writes to a random
-    address. On E4M6 the last Cyberdemon opens the doors tagged 666 and on
+  * On E4M6 the last Cyberdemon opens the doors tagged 666 and on
     E4M8 the last Spider Mastermind lowers the floor tagged 666, as on the PC;
     the FX3 cartridge ended both levels at once.
-  * The skill chosen with *New Game* takes effect at once.
   * New line specials (keyed remote doors, 16-unit stairs, blazing doors and
     lifts), sector special 17 (random flicker).
   * Intermission percentages are right past 255 kills/items and on levels
     without monsters.
-  * The display on/off IRQs no longer miss their line when a GSU IRQ ran
-    first (black view top, lost VRAM transfers).
-  * Turbo sound effects play with the FX3 data (its turbo table held the FX3
-    cartridge's addresses) and no longer clash with music commands.
-  * The mouse turn is cleared at level start (random power-on RAM gave a
-    random start angle).
 
 ## Build
 
