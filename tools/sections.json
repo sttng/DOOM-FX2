@@ -1,0 +1,2283 @@
+{
+ "BANK00": {
+  "kind": "fixed",
+  "ram": false,
+  "code": true,
+  "home_file": 256,
+  "real": 33024,
+  "pc": 33024,
+  "file": 256
+ },
+ "REGISTRATION": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 32688,
+  "real": 65456,
+  "pc": 65456,
+  "file": 32688
+ },
+ "VECTORS0": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 32740,
+  "real": 65508,
+  "pc": 65508,
+  "file": 32740
+ },
+ "VECTORS1": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 32764,
+  "real": 65532,
+  "pc": 65532,
+  "file": 32764
+ },
+ "RANDOM": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 4194304,
+  "file": 0
+ },
+ "RAM0": {
+  "kind": "fixed",
+  "ram": true,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 0
+ },
+ "RAM1GSUVECTORS": {
+  "kind": "fixed",
+  "ram": true,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 256
+ },
+ "RAM1": {
+  "kind": "fixed",
+  "ram": true,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 272
+ },
+ "RAM2": {
+  "kind": "fixed",
+  "ram": true,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 8265728
+ },
+ "RAM3": {
+  "kind": "fixed",
+  "ram": true,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 8323072
+ },
+ "RAM7A": {
+  "kind": "fixed",
+  "ram": true,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 7340032
+ },
+ "RAM7B": {
+  "kind": "fixed",
+  "ram": true,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 7340544
+ },
+ "RAM7C": {
+  "kind": "fixed",
+  "ram": true,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 7341056
+ },
+ "RAM7C0": {
+  "kind": "fixed",
+  "ram": true,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 7342208
+ },
+ "RAM7C1": {
+  "kind": "fixed",
+  "ram": true,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 7343488
+ },
+ "RAM7C2": {
+  "kind": "fixed",
+  "ram": true,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 7344768
+ },
+ "RAM7C3": {
+  "kind": "fixed",
+  "ram": true,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 7346048
+ },
+ "RAM7C4": {
+  "kind": "fixed",
+  "ram": true,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 7347328
+ },
+ "RAM7C5": {
+  "kind": "fixed",
+  "ram": true,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 7348608
+ },
+ "RAM7C6": {
+  "kind": "fixed",
+  "ram": true,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 7349888
+ },
+ "RAM7C7": {
+  "kind": "fixed",
+  "ram": true,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 7351168
+ },
+ "RAM7D": {
+  "kind": "fixed",
+  "ram": true,
+  "code": false,
+  "home_file": 0,
+  "real": 4194304,
+  "pc": 7352448
+ },
+ "WALLIMGDEF01": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 32768,
+  "real": 98304,
+  "pc": 98304,
+  "file": 32768
+ },
+ "WALLIMGDEF02": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 65536,
+  "real": 163840,
+  "pc": 163840,
+  "file": 65536
+ },
+ "WALLIMGDEF03": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 98304,
+  "real": 229376,
+  "pc": 229376,
+  "file": 98304
+ },
+ "WALLIMGDEF04": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 131072,
+  "real": 294912,
+  "pc": 294912,
+  "file": 131072
+ },
+ "WALLIMGDEF05": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 163840,
+  "real": 360448,
+  "pc": 360448,
+  "file": 163840
+ },
+ "WALLIMGDEF06": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 196608,
+  "real": 425984,
+  "pc": 425984,
+  "file": 196608
+ },
+ "WALLIMGDEF07": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 229376,
+  "real": 491520,
+  "pc": 491520,
+  "file": 229376
+ },
+ "WALLIMGDEF08": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 262144,
+  "real": 557056,
+  "pc": 557056,
+  "file": 262144
+ },
+ "WALLIMGDEF09": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 294912,
+  "real": 622592,
+  "pc": 622592,
+  "file": 294912
+ },
+ "WALLIMGDEF0A": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 327680,
+  "real": 688128,
+  "pc": 688128,
+  "file": 327680
+ },
+ "WALLIMGDEF0B": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 360448,
+  "real": 753664,
+  "pc": 753664,
+  "file": 360448
+ },
+ "WALLIMGDEF0C": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 393216,
+  "real": 819200,
+  "pc": 819200,
+  "file": 393216
+ },
+ "WALLIMGDEF0D": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 425984,
+  "real": 884736,
+  "pc": 884736,
+  "file": 425984
+ },
+ "WALLIMGDEF18": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 786432,
+  "real": 1605632,
+  "pc": 1605632,
+  "file": 786432
+ },
+ "WALLIMGDEF19": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 819200,
+  "real": 1671168,
+  "pc": 1671168,
+  "file": 819200
+ },
+ "WALLIMGDEF1A": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 851968,
+  "real": 1736704,
+  "pc": 1736704,
+  "file": 851968
+ },
+ "WALLIMGDEF1B": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 884736,
+  "real": 1802240,
+  "pc": 1802240,
+  "file": 884736
+ },
+ "WALLIMGDEF1C": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 917504,
+  "real": 1867776,
+  "pc": 1867776,
+  "file": 917504
+ },
+ "WALLIMGDEF1D": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 950272,
+  "real": 1933312,
+  "pc": 1933312,
+  "file": 950272
+ },
+ "MUSIC_C": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 458752,
+  "real": 4653056,
+  "pc": 4653056,
+  "file": 458752,
+  "crossok": true
+ },
+ "ENGINE_GSUCODE": {
+  "kind": "fixed",
+  "ram": false,
+  "code": true,
+  "home_file": 363,
+  "real": 33131,
+  "pc": 33131,
+  "file": 363
+ },
+ "ENGINE": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 2072266,
+  "real": 6266570,
+  "pc": 6266570,
+  "file": 2072266
+ },
+ "ENGINE_RAMCODE": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 1835008,
+  "real": 6029312,
+  "pc": 6029312,
+  "file": 1835008
+ },
+ "LEVEL": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 2044206,
+  "real": 6238510,
+  "pc": 6238510,
+  "file": 2044206
+ },
+ "WALLS": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1769472,
+  "real": 5963776,
+  "pc": 5963776,
+  "file": 1769472
+ },
+ "TEXTURES": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1891706,
+  "real": 6086010,
+  "pc": 6086010,
+  "file": 1891706
+ },
+ "IMAGES": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1736704,
+  "real": 5931008,
+  "pc": 5931008,
+  "file": 1736704
+ },
+ "COLOUR_MAPS": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1891840,
+  "real": 6086144,
+  "pc": 6086144,
+  "file": 1891840,
+  "align": 256,
+  "min_in_bank": 32768
+ },
+ "RL_FONT_DATA": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2037006,
+  "real": 6231310,
+  "pc": 6231310,
+  "file": 2037006
+ },
+ "RL_STATUSBAR_DATA": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2075044,
+  "real": 6269348,
+  "pc": 6269348,
+  "file": 2075044
+ },
+ "RL_STATUSNUM_DATA": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1702877,
+  "real": 5897181,
+  "pc": 5897181,
+  "file": 1702877
+ },
+ "RL_STATUSFACES_DATA": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1989556,
+  "real": 6183860,
+  "pc": 6183860,
+  "file": 1989556
+ },
+ "RL_STATUSKEYS_DATA": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2096620,
+  "real": 6290924,
+  "pc": 6290924,
+  "file": 2096620
+ },
+ "RL_STATUSARMS_DATA": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2091783,
+  "real": 6286087,
+  "pc": 6286087,
+  "file": 2091783
+ },
+ "RL_MAINMENU_DATA": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2085311,
+  "real": 6279615,
+  "pc": 6279615,
+  "file": 2085311
+ },
+ "RL_SKILLMENU_DATA": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 28164,
+  "real": 4222468,
+  "pc": 4222468,
+  "file": 28164
+ },
+ "RL_EPISODEMENU_DATA": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2066677,
+  "real": 6260981,
+  "pc": 6260981,
+  "file": 2066677
+ },
+ "_OBJECTDATA": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1834650,
+  "real": 6028954,
+  "pc": 6028954,
+  "file": 1834650
+ },
+ "_MOBJECTDATA": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2087487,
+  "real": 6281791,
+  "pc": 6281791,
+  "file": 2087487
+ },
+ "E1M1_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1613524,
+  "real": 5807828,
+  "pc": 5807828,
+  "file": 1613524
+ },
+ "E1M1_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1828974,
+  "real": 6023278,
+  "pc": 6023278,
+  "file": 1828974
+ },
+ "E1M2_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1048576,
+  "real": 5242880,
+  "pc": 5242880,
+  "file": 1048576
+ },
+ "E1M2_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1037390,
+  "real": 5231694,
+  "pc": 5231694,
+  "file": 1037390
+ },
+ "E1M3_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1179648,
+  "real": 5373952,
+  "pc": 5373952,
+  "file": 1179648
+ },
+ "E1M3_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1870410,
+  "real": 6064714,
+  "pc": 6064714,
+  "file": 1870410
+ },
+ "E1M4_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1507328,
+  "real": 5701632,
+  "pc": 5701632,
+  "file": 1507328
+ },
+ "E1M4_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1955148,
+  "real": 6149452,
+  "pc": 6149452,
+  "file": 1955148
+ },
+ "E1M5_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1441792,
+  "real": 5636096,
+  "pc": 5636096,
+  "file": 1441792
+ },
+ "E1M5_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1928547,
+  "real": 6122851,
+  "pc": 6122851,
+  "file": 1928547
+ },
+ "E1M6_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 32685,
+  "real": 4226989,
+  "pc": 4226989,
+  "file": 32685
+ },
+ "E1M6_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 32685,
+  "real": 4226989,
+  "pc": 4226989,
+  "file": 32685
+ },
+ "E1M7_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1245184,
+  "real": 5439488,
+  "pc": 5439488,
+  "file": 1245184
+ },
+ "E1M7_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1881270,
+  "real": 6075574,
+  "pc": 6075574,
+  "file": 1881270
+ },
+ "E1M8_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1548946,
+  "real": 5743250,
+  "pc": 5743250,
+  "file": 1548946
+ },
+ "E1M8_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1919449,
+  "real": 6113753,
+  "pc": 6113753,
+  "file": 1919449
+ },
+ "E1M9_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1638400,
+  "real": 5832704,
+  "pc": 5832704,
+  "file": 1638400
+ },
+ "E1M9_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1974422,
+  "real": 6168726,
+  "pc": 6168726,
+  "file": 1974422
+ },
+ "E2M1_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1420689,
+  "real": 5614993,
+  "pc": 5614993,
+  "file": 1420689
+ },
+ "E2M1_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1567909,
+  "real": 5762213,
+  "pc": 5762213,
+  "file": 1567909
+ },
+ "E2M2_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 32685,
+  "real": 4226989,
+  "pc": 4226989,
+  "file": 32685
+ },
+ "E2M2_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 32685,
+  "real": 4226989,
+  "pc": 4226989,
+  "file": 32685
+ },
+ "E2M3_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1376256,
+  "real": 5570560,
+  "pc": 5570560,
+  "file": 1376256
+ },
+ "E2M3_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1966080,
+  "real": 6160384,
+  "pc": 6160384,
+  "file": 1966080
+ },
+ "E2M4_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 655360,
+  "real": 4849664,
+  "pc": 4849664,
+  "file": 655360
+ },
+ "E2M4_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1167435,
+  "real": 5361739,
+  "pc": 5361739,
+  "file": 1167435
+ },
+ "E2M5_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 32685,
+  "real": 4226989,
+  "pc": 4226989,
+  "file": 32685
+ },
+ "E2M5_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 32685,
+  "real": 4226989,
+  "pc": 4226989,
+  "file": 32685
+ },
+ "E2M6_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1114112,
+  "real": 5308416,
+  "pc": 5308416,
+  "file": 1114112
+ },
+ "E2M6_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1102477,
+  "real": 5296781,
+  "pc": 5296781,
+  "file": 1102477
+ },
+ "E2M7_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 32685,
+  "real": 4226989,
+  "pc": 4226989,
+  "file": 32685
+ },
+ "E2M7_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 32685,
+  "real": 4226989,
+  "pc": 4226989,
+  "file": 32685
+ },
+ "E2M8_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1847723,
+  "real": 6042027,
+  "pc": 6042027,
+  "file": 1847723
+ },
+ "E2M8_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 650778,
+  "real": 4845082,
+  "pc": 4845082,
+  "file": 650778
+ },
+ "E2M9_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1982245,
+  "real": 6176549,
+  "pc": 6176549,
+  "file": 1982245
+ },
+ "E2M9_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2082856,
+  "real": 6277160,
+  "pc": 6277160,
+  "file": 2082856
+ },
+ "E3M1_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1232729,
+  "real": 5427033,
+  "pc": 5427033,
+  "file": 1232729
+ },
+ "E3M1_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1699006,
+  "real": 5893310,
+  "pc": 5893310,
+  "file": 1699006
+ },
+ "E3M2_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 624194,
+  "real": 4818498,
+  "pc": 4818498,
+  "file": 624194
+ },
+ "E3M2_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2024685,
+  "real": 6218989,
+  "pc": 6218989,
+  "file": 2024685
+ },
+ "E3M3_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 983040,
+  "real": 5177344,
+  "pc": 5177344,
+  "file": 983040
+ },
+ "E3M3_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1910328,
+  "real": 6104632,
+  "pc": 6104632,
+  "file": 1910328
+ },
+ "E3M4_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 720896,
+  "real": 4915200,
+  "pc": 4915200,
+  "file": 720896
+ },
+ "E3M4_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1859185,
+  "real": 6053489,
+  "pc": 6053489,
+  "file": 1859185
+ },
+ "E3M5_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 32685,
+  "real": 4226989,
+  "pc": 4226989,
+  "file": 32685
+ },
+ "E3M5_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 32685,
+  "real": 4226989,
+  "pc": 4226989,
+  "file": 32685
+ },
+ "E3M6_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1572864,
+  "real": 5767168,
+  "pc": 5767168,
+  "file": 1572864
+ },
+ "E3M6_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1815735,
+  "real": 6010039,
+  "pc": 6010039,
+  "file": 1815735
+ },
+ "E3M7_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1310720,
+  "real": 5505024,
+  "pc": 5505024,
+  "file": 1310720
+ },
+ "E3M7_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1900544,
+  "real": 6094848,
+  "pc": 6094848,
+  "file": 1900544
+ },
+ "E3M8_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2011068,
+  "real": 6205372,
+  "pc": 6205372,
+  "file": 2011068
+ },
+ "E3M8_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2047659,
+  "real": 6241963,
+  "pc": 6241963,
+  "file": 2047659
+ },
+ "E3M9_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608,
+  "real": 5677912,
+  "pc": 5677912,
+  "file": 1483608
+ },
+ "E3M9_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1937518,
+  "real": 6131822,
+  "pc": 6131822,
+  "file": 1937518
+ },
+ "INIT": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 982971,
+  "real": 5177275,
+  "pc": 5177275,
+  "file": 982971
+ },
+ "SNES": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 32656,
+  "real": 4226960,
+  "pc": 4226960,
+  "file": 32656
+ },
+ "SYS": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 2031525,
+  "real": 6225829,
+  "pc": 6225829,
+  "file": 2031525
+ },
+ "TEXTFONT_DATA": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2090419,
+  "real": 6284723,
+  "pc": 6284723,
+  "file": 2090419
+ },
+ "VARS": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 1114005,
+  "real": 5308309,
+  "pc": 5308309,
+  "file": 1114005
+ },
+ "NMI": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 2096780,
+  "real": 6291084,
+  "pc": 6291084,
+  "file": 2096780
+ },
+ "IRQ": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 655317,
+  "real": 4849621,
+  "pc": 4849621,
+  "file": 655317
+ },
+ "COMMON": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 1245043,
+  "real": 5439347,
+  "pc": 5439347,
+  "file": 1245043
+ },
+ "COMP": {
+  "kind": "lorom",
+  "ram": false,
+  "code": true,
+  "home_file": 2089011,
+  "real": 4186163,
+  "pc": 4186163,
+  "file": 2089011
+ },
+ "XFER": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 654771,
+  "real": 4849075,
+  "pc": 4849075,
+  "file": 654771
+ },
+ "SINCOS": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 713937,
+  "real": 4908241,
+  "pc": 4908241,
+  "file": 713937
+ },
+ "INVERSE": {
+  "kind": "lorom",
+  "ram": false,
+  "code": false,
+  "home_file": 1703936,
+  "real": 3440640,
+  "pc": 3440640,
+  "file": 1703936
+ },
+ "SIGHTRAY": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1946452,
+  "real": 6140756,
+  "pc": 6140756,
+  "file": 1946452
+ },
+ "RLSCNPIXSCALE": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1672789,
+  "real": 5867093,
+  "pc": 5867093,
+  "file": 1672789
+ },
+ "_CHARDEFFIST": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1963583,
+  "real": 6157887,
+  "pc": 6157887,
+  "file": 1963583
+ },
+ "_CHARDEFPISTOL": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2060573,
+  "real": 6254877,
+  "pc": 6254877,
+  "file": 2060573
+ },
+ "_CHARDEFSHOTGUN": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2018029,
+  "real": 6212333,
+  "pc": 6212333,
+  "file": 2018029
+ },
+ "_CHARDEFCHAINSAW": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2040718,
+  "real": 6235022,
+  "pc": 6235022,
+  "file": 2040718
+ },
+ "_CHARDEFCHAINGUN": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2080392,
+  "real": 6274696,
+  "pc": 6274696,
+  "file": 2080392
+ },
+ "_CHARDEFROCKET": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2050918,
+  "real": 6245222,
+  "pc": 6245222,
+  "file": 2050918
+ },
+ "_CHARDEFPLASMA": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2057373,
+  "real": 6251677,
+  "pc": 6251677,
+  "file": 2057373
+ },
+ "_CHARDEFBFG": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2077800,
+  "real": 6272104,
+  "pc": 6272104,
+  "file": 2077800
+ },
+ "_CHARDEFSUPERSHOTGUN": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2077800,
+  "real": 6272104,
+  "pc": 6272104,
+  "file": 2077800
+ },
+ "_CUTDATAFIST": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2096097,
+  "real": 6290401,
+  "pc": 6290401,
+  "file": 2096097
+ },
+ "_CUTDATAPISTOL": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1441452,
+  "real": 5635756,
+  "pc": 5635756,
+  "file": 1441452
+ },
+ "_CUTDATASHOTGUN": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1375572,
+  "real": 5569876,
+  "pc": 5569876,
+  "file": 1375572
+ },
+ "_CUTDATACHAINSAW": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1638030,
+  "real": 5832334,
+  "pc": 5832334,
+  "file": 1638030
+ },
+ "_CUTDATACHAINGUN": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2096360,
+  "real": 6290664,
+  "pc": 6290664,
+  "file": 2096360
+ },
+ "_CUTDATAROCKET": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2095063,
+  "real": 6289367,
+  "pc": 6289367,
+  "file": 2095063
+ },
+ "_CUTDATAPLASMA": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1179177,
+  "real": 5373481,
+  "pc": 5373481,
+  "file": 1179177
+ },
+ "_CUTDATABFG": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1572543,
+  "real": 5766847,
+  "pc": 5766847,
+  "file": 1572543
+ },
+ "_CUTDATASUPERSHOTGUN": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1572543,
+  "real": 5766847,
+  "pc": 5766847,
+  "file": 1572543
+ },
+ "MUSIC_DRIVER": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 972237,
+  "real": 5166541,
+  "pc": 5166541,
+  "file": 972237
+ },
+ "LOGO2": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 982802,
+  "real": 5177106,
+  "pc": 5177106,
+  "file": 982802
+ },
+ "LOGO2_DATA_0": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2063645,
+  "real": 6257949,
+  "pc": 6257949,
+  "file": 2063645
+ },
+ "LOGO2_DATA_1": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1769186,
+  "real": 5963490,
+  "pc": 5963490,
+  "file": 1769186
+ },
+ "TITLE": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 2092887,
+  "real": 6287191,
+  "pc": 6287191,
+  "file": 2092887
+ },
+ "TITLE_DATA_0": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1295760,
+  "real": 5490064,
+  "pc": 5490064,
+  "file": 1295760
+ },
+ "TITLE_DATA_1": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 776155,
+  "real": 4970459,
+  "pc": 4970459,
+  "file": 776155
+ },
+ "TITLE_DATA_2": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2095448,
+  "real": 6289752,
+  "pc": 6289752,
+  "file": 2095448
+ },
+ "TITLE_DATA_3": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 786186,
+  "real": 4980490,
+  "pc": 4980490,
+  "file": 786186
+ },
+ "STARTSCREEN": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 2094448,
+  "real": 6288752,
+  "pc": 6288752,
+  "file": 2094448
+ },
+ "ORDER": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 2094448
+ },
+ "ORDER_DATA_0": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1295760
+ },
+ "ORDER_DATA_1": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 776155
+ },
+ "ORDER_DATA_2": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2095448
+ },
+ "ORDER_DATA_3": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 786186
+ },
+ "MAIN": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 2095791,
+  "real": 6290095,
+  "pc": 6290095,
+  "file": 2095791
+ },
+ "SCORE": {
+  "kind": "reloc",
+  "ram": false,
+  "code": true,
+  "home_file": 2054150,
+  "real": 6248454,
+  "pc": 6248454,
+  "file": 2054150
+ },
+ "SCORE_DATA": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2069486,
+  "real": 6263790,
+  "pc": 6263790,
+  "file": 2069486
+ },
+ "SCOREE1_DATA_0": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1786380,
+  "real": 5980684,
+  "pc": 5980684,
+  "file": 1786380
+ },
+ "SCOREE1_DATA_1": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2031616,
+  "real": 6225920,
+  "pc": 6225920,
+  "file": 2031616
+ },
+ "SCOREE1_DATA_2": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1506498,
+  "real": 5700802,
+  "pc": 5700802,
+  "file": 1506498
+ },
+ "SCOREE2_DATA_0": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1801456,
+  "real": 5995760,
+  "pc": 5995760,
+  "file": 1801456
+ },
+ "SCOREE2_DATA_1": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2003984,
+  "real": 6198288,
+  "pc": 6198288,
+  "file": 2003984
+ },
+ "SCOREE2_DATA_2": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2031008,
+  "real": 6225312,
+  "pc": 6225312,
+  "file": 2031008
+ },
+ "SCOREE3_DATA_0": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1361188,
+  "real": 5555492,
+  "pc": 5555492,
+  "file": 1361188
+ },
+ "SCOREE3_DATA_1": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1996864,
+  "real": 6191168,
+  "pc": 6191168,
+  "file": 1996864
+ },
+ "SCOREE3_DATA_2": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2093809,
+  "real": 6288113,
+  "pc": 6288113,
+  "file": 2093809
+ },
+ "REV": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 720851,
+  "real": 4915155,
+  "pc": 4915155,
+  "file": 720851
+ },
+ "E1M1_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E1M2_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E1M3_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E1M4_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E1M5_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E1M6_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E1M7_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E1M8_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E1M9_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E2M1_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E2M2_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E2M3_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E2M4_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E2M5_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E2M6_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E2M7_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E2M8_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E2M9_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E3M1_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E3M2_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E3M3_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E3M4_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E3M5_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E3M6_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E3M7_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E3M8_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E3M9_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E4M1_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M1_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1937518
+ },
+ "E4M1_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E4M2_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M2_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1937518
+ },
+ "E4M2_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E4M3_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M3_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1937518
+ },
+ "E4M3_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E4M4_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M4_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1937518
+ },
+ "E4M4_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E4M5_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M5_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1937518
+ },
+ "E4M5_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E4M6_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M6_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1937518
+ },
+ "E4M6_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E4M7_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M7_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1937518
+ },
+ "E4M7_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E4M8_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M8_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1937518
+ },
+ "E4M8_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "E4M9_A": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M9_B": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1937518
+ },
+ "E4M9_R": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 4194304,
+  "runpc": 7405568
+ },
+ "WALLIMGDEF1E": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 983040,
+  "real": 1998848,
+  "pc": 1998848,
+  "file": 983040
+ },
+ "WALLIMGDEF1F": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 1015808,
+  "real": 2064384,
+  "pc": 2064384,
+  "file": 1015808
+ },
+ "WALLIMGDEF36": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 1769472,
+  "real": 3571712,
+  "pc": 3571712,
+  "file": 1769472
+ },
+ "WALLIMGDEF37": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 1802240,
+  "real": 3637248,
+  "pc": 3637248,
+  "file": 1802240
+ },
+ "WALLIMGDEF3A": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 1900544,
+  "real": 3833856,
+  "pc": 3833856,
+  "file": 1900544
+ },
+ "WALLIMGDEF3B": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 1933312,
+  "real": 3899392,
+  "pc": 3899392,
+  "file": 1933312
+ },
+ "WALLIMGDEF3F": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 2064384,
+  "real": 4161536,
+  "pc": 4161536,
+  "file": 2064384
+ },
+ "MUSIC_TABLES": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 972237
+ },
+ "SCOREE4_DATA_0": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1361188
+ },
+ "SCOREE4_DATA_1": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1996864
+ },
+ "SCOREE4_DATA_2": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2093809
+ },
+ "SAVEGAME": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1114005
+ },
+ "RUMBLE": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1114005
+ },
+ "E1M1_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1613524
+ },
+ "E1M2_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1048576
+ },
+ "E1M3_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1179648
+ },
+ "E1M4_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1507328
+ },
+ "E1M5_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1441792
+ },
+ "E1M6_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 32685
+ },
+ "E1M7_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1245184
+ },
+ "E1M8_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1548946
+ },
+ "E1M9_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1638400
+ },
+ "E2M1_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1420689
+ },
+ "E2M2_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 32685
+ },
+ "E2M3_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1376256
+ },
+ "E2M4_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 655360
+ },
+ "E2M5_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 32685
+ },
+ "E2M6_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1114112
+ },
+ "E2M7_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 32685
+ },
+ "E2M8_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1847723
+ },
+ "E2M9_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1982245
+ },
+ "E3M1_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1232729
+ },
+ "E3M2_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 624194
+ },
+ "E3M3_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 983040
+ },
+ "E3M4_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 720896
+ },
+ "E3M5_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 32685
+ },
+ "E3M6_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1572864
+ },
+ "E3M7_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1310720
+ },
+ "E3M8_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2011068
+ },
+ "E3M9_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M1_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M2_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M3_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M4_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M5_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M6_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M7_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M8_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "E4M9_J": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1483608
+ },
+ "WALLIMGDEF3C": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 1966080,
+  "real": 3964928,
+  "pc": 3964928,
+  "file": 1966080
+ },
+ "WALLIMGDEF39": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 1867776,
+  "real": 3768320,
+  "pc": 3768320,
+  "file": 1867776
+ },
+ "WALLIMGDEF29": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 1343488,
+  "real": 2719744,
+  "pc": 2719744,
+  "file": 1343488
+ },
+ "WALLIMGDEF23": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 1146880,
+  "real": 2326528,
+  "pc": 2326528,
+  "file": 1146880
+ },
+ "WALLIMGDEF27": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 1277952,
+  "real": 2588672,
+  "pc": 2588672,
+  "file": 1277952
+ },
+ "WALLIMGDEF2B": {
+  "kind": "fixed",
+  "ram": false,
+  "code": false,
+  "home_file": 1409024,
+  "real": 2850816,
+  "pc": 2850816,
+  "file": 1409024
+ },
+ "SCORENAME_DATA": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 2069486
+ }
+}

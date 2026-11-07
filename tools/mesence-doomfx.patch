@@ -1,0 +1,152 @@
+diff --git a/Core/SNES/Coprocessors/GSU/Gsu.Instructions.cpp b/Core/SNES/Coprocessors/GSU/Gsu.Instructions.cpp
+index 01c014b..ec020b5 100644
+--- a/Core/SNES/Coprocessors/GSU/Gsu.Instructions.cpp
++++ b/Core/SNES/Coprocessors/GSU/Gsu.Instructions.cpp
+@@ -706,6 +706,8 @@ void Gsu::WritePixelCache(GsuPixelCache& cache)
+ 	}
+ 
+ 	uint32_t tileAddress = GetTileAddress(cache.X, cache.Y);
++	if(cache.ValidBits != 0xFF) { g_gsuStat[1]++; g_gsuStat[2] += 2 * _state.PlotBpp * (_state.ClockSelect ? 5 : 6); }
++	else { g_gsuStat[3]++; g_gsuStat[4] += _state.PlotBpp * (_state.ClockSelect ? 5 : 6); }
+ 
+ 	for(int i = 0; i < _state.PlotBpp; i++) {
+ 		uint8_t value = 0;
+diff --git a/Core/SNES/Coprocessors/GSU/Gsu.cpp b/Core/SNES/Coprocessors/GSU/Gsu.cpp
+index 333fd22..fccf88c 100644
+--- a/Core/SNES/Coprocessors/GSU/Gsu.cpp
++++ b/Core/SNES/Coprocessors/GSU/Gsu.cpp
+@@ -1,3 +1,5 @@
++#include <cstdio>
++#include <unordered_map>
+ #include "pch.h"
+ #include "SNES/Coprocessors/GSU/Gsu.h"
+ #include "SNES/Coprocessors/GSU/GsuRomHandler.h"
+@@ -90,6 +92,15 @@ Gsu::Gsu(SnesConsole* console, uint32_t gsuRamSize, bool isFx3)
+ 				cpuMappings->RegisterHandler(0xC0, 0xFF, 0x0000, 0xFFFF, prgRomHandlers, 0, 0x400);
+ 			}
+ 		}
++
++		//DOOM-FX 4 MB map (as sd2snes/FXPak Pro maps a Super FX ROM larger than 2 MB;
++		//see the DOOM-FX README): the CPU sees file $200000-$3FFFFF ("Super NES ROM",
++		//CPU only) linearly at $E0-$FF.  The GSU keeps seeing only the first 2 MB.
++		//CPU reads are arbitrated like the GamePak ROM (blocked while the GSU owns
++		//the ROM bus), the conservative case.
++		if(prgRomHandlers.size() > 0x200 && prgRomHandlers.size() <= 0x400) {
++			cpuMappings->RegisterHandler(0xE0, 0xFF, 0x0000, 0xFFFF, _gsuCpuRomHandlers, 0, 0x200);
++		}
+ 	}
+ 
+ 	//GSU mappings
+@@ -100,6 +111,19 @@ Gsu::Gsu(SnesConsole* console, uint32_t gsuRamSize, bool isFx3)
+ 	_mappings.RegisterHandler(0x70, 0x71, 0x0000, 0xFFFF, _gsuRamHandlers);
+ }
+ 
++uint64_t g_gsuStat[8];
++uint32_t* g_gsuProf = nullptr;
++uint64_t* g_gsuIdle = nullptr;
++uint64_t g_gsuIdleStart = 0;
++std::unordered_map<uint32_t, uint64_t> g_gsuIdlePc;
++uint32_t g_gsuIdleFrom = 0;
++FILE* g_gsuTrace = nullptr;
++uint32_t g_gsuTraceFrames = 60;
++bool g_gsuTraceOpen = false;
++uint64_t g_gsuTraceStart = 0, g_gsuTraceEnd = 0;
++int g_gsuTraceWhy = 0;
++uint32_t g_gsuTracePc = 0;
++
+ Gsu::~Gsu()
+ {
+ 	delete[] _gsuRam;
+@@ -128,13 +152,49 @@ void Gsu::Run()
+ {
+ 	uint64_t targetCycle = _memoryManager->GetMasterClock() * _clockMultiplier;
+ 
+-	while(!_stopped && _state.CycleCount < targetCycle) {
+-		Exec();
++	if(g_gsuProf) {
++		while(!_stopped && _state.CycleCount < targetCycle) {
++			uint32_t pc = ((_state.ProgramBank << 16) | _state.R[15]) & 0xFFFFFF;
++			uint64_t c0 = _state.CycleCount;
++			Exec();
++			g_gsuProf[pc] += (uint32_t)(_state.CycleCount - c0);
++		}
++	} else {
++		while(!_stopped && _state.CycleCount < targetCycle) {
++			Exec();
++		}
+ 	}
+ 
++	if(g_gsuIdle) {
++		//(DOOM-FX: GSU run/idle time, mesenrun MESEN_GSU_IDLE) running = executing (with RAM/ROM
++		//waits and pixel cache flushes); the rest of the time to the target: stopped (GO clear)
++		//or waiting for the ROM or RAM bus the CPU owns (RON/RAN clear)
++		uint32_t frame = (uint32_t)(_memoryManager->GetMasterClock() / 357368);
++		if(frame < 65536) {
++			uint64_t* f = g_gsuIdle + 4 * (frame + 1);
++			uint64_t run = (_state.CycleCount - g_gsuIdleStart) / _clockMultiplier;
++			uint64_t idle = targetCycle > _state.CycleCount ? (targetCycle - _state.CycleCount) / _clockMultiplier : 0;
++			int why = !_state.SFR.Running ? 1 : _waitForRomAccess ? 2 : _waitForRamAccess ? 3 : 1;
++			f[0] += run; g_gsuIdle[0] += run;
++			f[why] += idle; g_gsuIdle[why] += idle;
++			if(idle && g_gsuTrace && frame >= g_gsuIdleFrom && frame < g_gsuIdleFrom + g_gsuTraceFrames) {
++				//(MESEN_GSU_TRACE: idle intervals: start master clock, length, why, PC; contiguous ones merged)
++				uint64_t t0 = targetCycle / _clockMultiplier - idle;
++				uint32_t pc = ((_state.ProgramBank << 16) | _state.R[15]) & 0xFFFFFF;
++				if(g_gsuTraceOpen && g_gsuTraceEnd == t0 && g_gsuTraceWhy == why && g_gsuTracePc == pc) {
++					g_gsuTraceEnd += idle;
++				} else {
++					if(g_gsuTraceOpen) fprintf(g_gsuTrace, "%llu %llu %d %06X\n", (unsigned long long)g_gsuTraceStart, (unsigned long long)(g_gsuTraceEnd - g_gsuTraceStart), g_gsuTraceWhy, g_gsuTracePc);
++					g_gsuTraceOpen = true; g_gsuTraceStart = t0; g_gsuTraceEnd = t0 + idle; g_gsuTraceWhy = why; g_gsuTracePc = pc;
++				}
++			}
++			if(idle && frame >= g_gsuIdleFrom) g_gsuIdlePc[((uint32_t)why << 24) | (((_state.ProgramBank << 16) | _state.R[15]) & 0xFFFFFF)] += idle;
++		}
++	}
+ 	if(targetCycle > _state.CycleCount) {
+ 		Step(targetCycle - _state.CycleCount);
+ 	}
++	g_gsuIdleStart = _state.CycleCount;
+ }
+ 
+ void Gsu::Exec()
+diff --git a/Core/SNES/Coprocessors/GSU/Gsu.h b/Core/SNES/Coprocessors/GSU/Gsu.h
+index a505e4a..89d93a4 100644
+--- a/Core/SNES/Coprocessors/GSU/Gsu.h
++++ b/Core/SNES/Coprocessors/GSU/Gsu.h
+@@ -4,6 +4,18 @@
+ #include "SNES/Coprocessors/GSU/GsuTypes.h"
+ #include "SNES/MemoryMappings.h"
+ #include "SNES/IMemoryHandler.h"
++#include <cstdio>
++extern uint64_t* g_gsuIdle;	//(DOOM-FX: GSU run/idle cycles, total + per frame, mesenrun MESEN_GSU_IDLE)
++extern uint64_t g_gsuIdleStart;
++#include <unordered_map>
++extern std::unordered_map<uint32_t, uint64_t> g_gsuIdlePc;
++extern uint32_t g_gsuIdleFrom;
++extern FILE* g_gsuTrace;
++extern uint32_t g_gsuTraceFrames;	//(MESEN_GSU_TRACE_FRAMES, default 60)
++extern bool g_gsuTraceOpen;
++extern uint64_t g_gsuTraceStart, g_gsuTraceEnd;
++extern int g_gsuTraceWhy;
++extern uint32_t g_gsuTracePc;	//(idle intervals from MESEN_GSU_IDLE_FROM on: MESEN_GSU_TRACE)	//(per-PC idle only from this frame on: MESEN_GSU_IDLE_FROM)	//(idle master clocks per (reason << 24 | GSU PC))
+ 
+ class Emulator;
+ class SnesConsole;
+@@ -13,6 +25,9 @@ class EmuSettings;
+ 
+ enum class MemoryOperationType;
+ 
++extern uint64_t g_gsuStat[8];	//(DOOM-FX: GSU cycle statistics, mesenrun MESEN_GSU_STATS)
++extern uint32_t* g_gsuProf;	//(DOOM-FX: GSU cycle profiler, mesenrun MESEN_GSU_PROF)
++
+ class Gsu : public BaseCoprocessor
+ {
+ private:
+@@ -72,6 +87,7 @@ private:
+ 	__forceinline void Step(uint64_t cycles)
+ 	{
+ 		_state.CycleCount += cycles;
++		g_gsuStat[0] += cycles;
+ 
+ 		if(_state.RomDelay) {
+ 			_state.RomDelay -= std::min<uint8_t>((uint8_t)cycles, _state.RomDelay);

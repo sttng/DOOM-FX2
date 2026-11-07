@@ -1,0 +1,3 @@
+{
+ "_comment": "2 MB builds (tools/mk2mb.py shareware / demo copies this to data/regions.json): no CPU-only Super NES ROM; every section is placed in the 2 MB GamePak ROM"
+}

@@ -1,0 +1,21 @@
+{
+ "_comment": "sections placed in the CPU-only Super NES ROM (file $200000+); glob patterns",
+ "MUSIC_C": "snesrom",
+ "*_R": "snesrom",
+ "TITLE_DATA_*": "snesrom",
+ "ORDER_DATA_*": "snesrom",
+ "SCOREE?_DATA_*": "snesrom",
+ "SCORE_DATA": "snesrom",
+ "SCORENAME_DATA": "snesrom",
+ "LOGO2_DATA_*": "snesrom",
+ "RL_SKILLMENU_DATA": "snesrom",
+ "RL_EPISODEMENU_DATA": "snesrom",
+ "RL_MAINMENU_DATA": "snesrom",
+ "TEXTFONT_DATA": "snesrom",
+ "_CHARDEF*": "snesrom",
+ "_CUTDATA*": "snesrom",
+ "MUSIC_TABLES": "snesrom",
+ "SAVEGAME": "snesrom",
+ "RUMBLE": "snesrom",
+ "RL_STATUS*_DATA": "snesrom"
+}
