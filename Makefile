@@ -1,0 +1,179 @@
+# DOOM for the Super Nintendo / Super FX 2 (GSU-2) with The Ultimate DOOM
+#
+#   make data FX3=<THE ULTIMATE DOOM.sfc> WAD=<DOOM.WAD> [SRC=<DOOM-FX source>]
+#                        - the data set (tools/mkdata.py) -> gamedata-fx3, linked as data; the DOOM-FX
+#                          source files it needs come from tools/doomfx-src unless SRC= names another copy
+#   make                 - assemble build/doom.sfc (tools/build.sh)
+#   make wadlevels WAD=<DOOM.WAD> [PWAD=<x.wad>] [MAPS="E1M1 E1M2"] [ZOKUMBSP=<path>] [REBUILD=1] [PROFILE=doom2]
+#                        - levels converted from a WAD (tools/wadlevels.py, tools/wad2rl.py), then build;
+#                          ZokumBSP rebuilds the nodes of maps too big for one bank (REBUILD=1: of every map)
+#   make fx3levels       - back to the FX3 levels
+#   make wadgfx WAD=<DOOM.WAD> [PWAD=<x.wad>]
+#                        - walls and sprites converted from a WAD (tools/wad2gfx.py), then build
+#   make fx3gfx          - back to the cartridge walls and sprites
+#   make wadart WAD=<DOOM.WAD> [PWAD=<x.wad>]
+#                        - title screen, menus and fonts from a WAD (tools/wad2art.py), then build
+#   make fx3art          - back to the cartridge title, menus and fonts
+#   make wadsfx WAD=<DOOM.WAD> [PWAD=<x.wad>] [FULL=1]
+#                        - sound effects converted from a WAD (tools/wad2soundfx.py), then build
+#   make fx3sfx          - back to the cartridge sound effects
+#   make doom2 WAD=<DOOM2.WAD|TNT.WAD|PLUTONIA.WAD> [NAMES=tnt|plutonia] [BANK3F=n] [MASKED=n]
+#              [MASKEDBANKS=3C,..] [MASKEDMAPS=MAP01,..] [WALLS=vq|rle] [ZOKUMBSP=<path>]
+#                        - DOOM II / TNT / Plutonia on a copy of a data set (see the doom2 target)
+#   make shareware WAD=<DOOM1.WAD> [ZOKUMBSP=<path>]
+#                        - the shareware ROM (Episode 1, 2 MB) on a copy of a DOOM data set
+#   make demo WAD=<DOOM2.WAD>
+#                        - DOOM II demo: MAP01-MAP03, 2 MB ROM, with the WAD's music converted
+#                          (on a copy of a DOOM II data set)
+#   make wadmusic WAD=<x.WAD>
+#                        - the WAD's music (title, intermission, the levels' songs) converted for
+#                          the SPC700 driver (tools/music/wad2music.py), then build
+#   make clean           - remove build/;  make distclean: also data and gamedata-*
+#
+# wadart, fx3art, doom2 and shareware then put in the retouched Pause/Save/Load menus
+# (tools/menus/*.png via tools/menus.py retouch; PNGMENUS= leaves them out).
+#
+PYTHON ?= python3
+PNGMENUS ?= 1
+MENUS = $(if $(PNGMENUS),$(PYTHON) tools/menus.py retouch --data data,@true)
+
+.PHONY: shareware demo doom2 all rom data wadlevels fx3levels wadgfx fx3gfx wadart fx3art wadsfx fx3sfx wadmusic clean distclean
+
+all: rom
+
+rom:
+	@test -e data/RLLEV/levels.inc || { echo "Game data missing - run: make data FX3=... WAD=..."; exit 1; }
+	@mkdir -p build
+	bash tools/build.sh
+
+data:
+	$(PYTHON) tools/mkdata.py --fx3 "$(FX3)" --wad "$(WAD)" $(if $(SRC),--src "$(SRC)") --out gamedata-fx3
+	ln -sfn gamedata-fx3 data
+
+wadlevels:
+	@test -n "$(WAD)" || { echo "usage: make wadlevels WAD=<DOOM.WAD> [PWAD=<x.wad>] [MAPS=...]"; exit 1; }
+	@mkdir -p build
+	$(PYTHON) tools/wadlevels.py --wad "$(WAD)" $(if $(PWAD),--wad "$(PWAD)") $(if $(ZOKUMBSP),--zokumbsp "$(ZOKUMBSP)") $(if $(REBUILD),--rebuild-nodes) $(if $(PROFILE),--profile $(PROFILE)) $(MAPS)
+
+# DOOM II / TNT / Plutonia: levels (MAP01-MAP32), walls, sprites, super shotgun, title/menus and
+# sound effects from the WAD into the data set, then build (tools/wadlevels.py does).  Work on a copy
+# of the data set; make fx3levels fx3gfx fx3art fx3sfx goes back.  With ZOKUMBSP the nodes of every
+# map are rebuilt.  NAMES: level names (default doom2).
+# BANK3F: bytes of GamePak bank $3F for wall strips (empty: none, the levels get it; Plutonia)
+BANK3F ?= 0x7E00
+# MASKED: bytes of strips for the middle textures of two-sided lines (grates, bars, windows; drawn
+# masked, also those without holes).  The default suits DOOM II (no bank to spare: the walls give
+# up the rest); TNT and Plutonia use MASKED=65536 with MASKEDBANKS (see the README).
+# MASKEDBANKS: GamePak banks filled with them first (of 3C 39 29 23 27 2B: the ones the set's levels
+# leave emptiest; TNT 3C, Plutonia 29)
+# MASKEDMAPS: masked middle textures for these maps only (the ones that fit; TNT and Plutonia)
+MASKED ?= 49152
+MASKEDBANKS ?=
+MASKEDMAPS ?=
+# WALLS: vq = wall format 3, 252 walls as 2x4 texel blocks from codebooks (tools/wallvq.py);
+#        rle = wall format 2, 128 walls as run-length strips
+WALLS ?= vq
+doom2:
+	@test -n "$(WAD)" || { echo "usage: make doom2 WAD=<DOOM2.WAD or TNT.WAD> [NAMES=tnt|plutonia] [BANK3F=] [MASKED=n] [MASKEDBANKS=3C,27] [WALLS=vq|rle] [ZOKUMBSP=<zokumbsp>]"; exit 1; }
+	$(PYTHON) tools/wad2gfx.py convert --data data --wad "$(WAD)" --doom2-monsters --bank-1f --extra-banks --map-walls \
+		$(if $(BANK3F),--bank-3f --bank-3f-size $(BANK3F)) --slots-by likeness --boost tools/doom2_wallboost.json \
+		--masked-opaque --masked-budget $(MASKED) $(if $(MASKEDBANKS),--masked-banks "$(MASKEDBANKS)") $(if $(MASKEDMAPS),--masked-maps "$(MASKEDMAPS)") \
+		$(if $(filter rle,$(WALLS)),--half-height --half-iter 3 --restep --target-blur 0.5 --dat-budget 40000 --wall-slots 128,--vq --wall-slots 252)
+	$(PYTHON) tools/wad2cut.py --data data --wad "$(WAD)"
+	@test -e data/wad2art.json || $(PYTHON) tools/wad2art.py learn --data data
+	$(PYTHON) tools/wad2art.py convert --data data --wad "$(WAD)" --interpic --level-names --cart skill
+	$(MENUS)
+	$(PYTHON) tools/wad2soundfx.py convert --data data --wad "$(WAD)"
+	$(PYTHON) tools/wadlevels.py --profile doom2 --names $(or $(NAMES),doom2) --wad "$(WAD)" $(if $(ZOKUMBSP),--zokumbsp "$(ZOKUMBSP)" --rebuild-nodes)
+
+# DOOM shareware: Episode 1 only, 2 MB ROM (tools/mk2mb.py shareware), with the levels, walls, sprites,
+# title/menus, intermission picture, sound effects and weapons of the shareware DOOM1.WAD.  Only the
+# art the set needs: walls the nine maps show, sprites the WAD has (wad2gfx.py --drop-unused), no
+# other score screens or plasma/BFG frames (levels.inc).  The episode menu keeps every episode:
+# Episodes 2-4 and E1M8's ending show the WAD's order screen HELP2 (!RLORDERSCREEN, --order HELP2).
+# Work on a copy of a DOOM data set (make data ...); wadlevels.py starts from the cartridge levels
+# (all 36 slots), so mk2mb.py shareware runs after it.
+SWMAPS = E1M1 E1M2 E1M3 E1M4 E1M5 E1M6 E1M7 E1M8 E1M9
+# middle textures of two-sided lines (the BRNBIG/BRNSMAL windows): drawn masked, as on the PC;
+# the first wad2gfx.py pass writes MASKED.JSON for the level conversion
+SWMASKED = --masked --masked-opaque --masked-budget 65536
+shareware:
+	@test -n "$(WAD)" || { echo "usage: make shareware WAD=<DOOM1.WAD> [ZOKUMBSP=<zokumbsp>]"; exit 1; }
+	$(PYTHON) tools/wad2gfx.py convert --data data --wad "$(WAD)" $(SWMASKED)
+	$(PYTHON) tools/wadlevels.py --no-build --wad "$(WAD)" $(if $(ZOKUMBSP),--zokumbsp "$(ZOKUMBSP)") $(SWMAPS)
+	$(PYTHON) tools/mk2mb.py shareware --wad "$(WAD)"
+	$(PYTHON) tools/wad2gfx.py convert --data data --wad "$(WAD)" $(SWMASKED) --drop-unused
+	@test -e data/wad2art.json || $(PYTHON) tools/wad2art.py learn --data data
+	$(PYTHON) tools/wad2art.py convert --data data --wad "$(WAD)" --intermission --level-names --title tools/title/TITLE.png --order HELP2 --cart skill,episode,skull,font,textfont
+	$(MENUS)
+	$(PYTHON) tools/wad2soundfx.py convert --data data --wad "$(WAD)" --drop-missing
+	$(PYTHON) tools/wad2cut.py --data data --wad "$(WAD)" --weapons Fist,Pistol,ShotGun,ChainSaw,ChainGun,Rocket
+	@mkdir -p build
+	bash tools/build.sh
+
+# DOOM II demo: MAP01-MAP03 only, 2 MB ROM (tools/mk2mb.py demo), on a copy of a DOOM II data set,
+# with DOOM2.WAD's music (tools/music/wad2music.py; the other ROMs keep the cartridge's music)
+demo:
+	@test -n "$(WAD)" || { echo "usage: make demo WAD=<DOOM2.WAD>"; exit 1; }
+	@grep -q '^!RLEPISODELEN = 99' data/RLLEV/levels.inc || { echo "data is not a DOOM II data set: make doom2 WAD=DOOM2.WAD first"; exit 1; }
+	$(PYTHON) tools/mk2mb.py demo
+	$(PYTHON) tools/music/wad2music.py convert --data data --wad "$(WAD)"
+	@mkdir -p build
+	bash tools/build.sh
+
+# the WAD's music for the title, the intermission and the levels in use (the music modules of
+# the data set are replaced; songs that do not fit sound RAM keep the cartridge's)
+wadmusic:
+	@test -n "$(WAD)" || { echo "usage: make wadmusic WAD=<x.WAD>"; exit 1; }
+	$(PYTHON) tools/music/wad2music.py convert --data data --wad "$(WAD)"
+	@mkdir -p build
+	bash tools/build.sh
+
+fx3levels:
+	$(PYTHON) tools/wadlevels.py --restore
+	@mkdir -p build
+	bash tools/build.sh
+
+wadgfx:
+	@test -n "$(WAD)" || { echo "usage: make wadgfx WAD=<DOOM.WAD> [PWAD=<x.wad>]"; exit 1; }
+	@test -e data/wad2gfx.json || { echo "data/wad2gfx.json missing - run: make data ... (or tools/wad2gfx.py learn)"; exit 1; }
+	$(PYTHON) tools/wad2gfx.py convert --data data --wad "$(WAD)" $(if $(PWAD),--wad "$(PWAD)")
+	@mkdir -p build
+	bash tools/build.sh
+
+fx3gfx:
+	$(PYTHON) tools/wad2gfx.py restore --data data
+	@mkdir -p build
+	bash tools/build.sh
+
+wadsfx:
+	@test -n "$(WAD)" || { echo "usage: make wadsfx WAD=<DOOM.WAD> [PWAD=<x.wad>] [FULL=1]"; exit 1; }
+	@test -e data/wad2soundfx.json || { echo "data/wad2soundfx.json missing - run: make data ... (or tools/wad2soundfx.py learn)"; exit 1; }
+	$(PYTHON) tools/wad2soundfx.py convert --data data --wad "$(WAD)" $(if $(PWAD),--wad "$(PWAD)") $(if $(FULL),--full)
+	@mkdir -p build
+	bash tools/build.sh
+
+fx3sfx:
+	$(PYTHON) tools/wad2soundfx.py restore --data data
+	@mkdir -p build
+	bash tools/build.sh
+
+wadart:
+	@test -n "$(WAD)" || { echo "usage: make wadart WAD=<DOOM.WAD> [PWAD=<x.wad>]"; exit 1; }
+	@test -e data/wad2art.json || $(PYTHON) tools/wad2art.py learn --data data
+	$(PYTHON) tools/wad2art.py convert --data data --wad "$(WAD)" $(if $(PWAD),--wad "$(PWAD)") --cart skill
+	$(MENUS)
+	@mkdir -p build
+	bash tools/build.sh
+
+fx3art:
+	$(PYTHON) tools/wad2art.py restore --data data
+	$(MENUS)
+	@mkdir -p build
+	bash tools/build.sh
+
+clean:
+	rm -rf build
+
+distclean: clean
+	rm -rf data gamedata-*
