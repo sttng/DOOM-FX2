@@ -1,8 +1,9 @@
 # DOOM for the Super Nintendo / Super FX 2 (GSU-2) with The Ultimate DOOM
 #
-#   make data FX3=<THE ULTIMATE DOOM.sfc> WAD=<DOOM.WAD> [SRC=<DOOM-FX source>]
+#   make data FX3=<THE ULTIMATE DOOM.sfc> WAD=<DOOM.WAD> [SRC=<DOOM-FX source>] [LEARN=1]
 #                        - the data set (tools/mkdata.py) -> gamedata-fx3, linked as data; the DOOM-FX
 #                          source files it needs come from tools/doomfx-src unless SRC= names another copy
+#                          (the WAD conversion rules from tools/rules; LEARN=1: learned from the cartridge)
 #   make                 - assemble build/doom.sfc (tools/build.sh)
 #   make wadlevels WAD=<DOOM.WAD> [PWAD=<x.wad>] [MAPS="E1M1 E1M2"] [ZOKUMBSP=<path>] [REBUILD=1] [PROFILE=doom2]
 #                        - levels converted from a WAD (tools/wadlevels.py, tools/wad2rl.py), then build;
@@ -47,7 +48,7 @@ rom:
 	bash tools/build.sh
 
 data:
-	$(PYTHON) tools/mkdata.py --fx3 "$(FX3)" --wad "$(WAD)" $(if $(SRC),--src "$(SRC)") --out gamedata-fx3
+	$(PYTHON) tools/mkdata.py --fx3 "$(FX3)" --wad "$(WAD)" $(if $(SRC),--src "$(SRC)") $(if $(LEARN),--learn) --out gamedata-fx3
 	ln -sfn gamedata-fx3 data
 
 wadlevels:

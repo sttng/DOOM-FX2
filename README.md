@@ -93,18 +93,6 @@ Converting maps from WADs is done with
 do not fit (*Node rebuilds* below): the DOOM II, TNT and Plutonia sets need it.
 Without it, such a map keeps the cartridge's version or is left out.
 
-### What is taken from the FX3 rom cartridge:
-
-- Art the WAD doesn’t have in SNES form: for example the status bar and face, the menu skull,
-  the skill and episode menus, the message and text fonts, and the palette. The Pause, Save
-  and Load menus are rebuilt but from the cartridge’s lettering.
-- Sound: the SPC700 music driver, the instrument library and the cartridge’s songs, plus the
-  sound-effect waves and the song and effect numbers. The WAD-music converter plays the converted
-  songs with these cartridge instruments.
-- Walls, sprites and floor colours already cut to SNES size, in the engine’s 252 wall slots and 232 sprites.
-- The 36 Ultimate DOOM levels in the engine’s format. DOOM-FX uses them directly.
-  They’re also the fallback when a map converted from a WAD doesn’t fit.
-
 ```sh
 make data FX3="THE ULTIMATE DOOM.sfc" WAD=DOOM.WAD   # -> gamedata-fx3/, linked as data/
 make                                    # -> build/doom.sfc, build/doom.sym
@@ -129,8 +117,14 @@ pads the ROM to 2 or 4 MB and sets the header and checksum.
 ## Converting from a WAD
 
 Each part of a data set can be built from a WAD and switched back to the
-cartridge's. `make data` first learns from your cartridge and `DOOM.WAD` how
-the SNES version was made (`data/*.json`).
+cartridge's. The conversions follow how the SNES version was made from the
+PC data: which DOOM texture became which SNES wall and floor colour, how
+each wall and sprite was resized, and how each sound effect was resampled.
+These rules come with the source (`tools/rules/`); `make data` adds DOOM's
+palette and texture signatures from your `DOOM.WAD` (`tools/rules.py
+install`, giving `data/*.json`). `make data LEARN=1` learns them from your
+cartridge again instead, and `rules.py check` compares the result with
+`tools/rules/`.
 
 ```sh
 make wadlevels WAD=DOOM.WAD [MAPS="E1M6 E3M5"] [ZOKUMBSP=...]   # make fx3levels
@@ -357,7 +351,18 @@ for your own use.
 
 ## Speed
 
-What makes the renderer hopefully faster than before:
+Frame times at the real Super FX clock (MesenCE, Hurt Me Plenty, the
+`test/det_suite.sh` input with `dettest.py --gsuclock 100`, 600 rendered
+frames):
+
+| level | VBlanks per frame | fps |
+|---|---|---|
+| E1M1 | 3.37 | 17.8 |
+| E3M5 | 3.44 | 17.5 |
+| E4M2 | 5.37 | 11.2 |
+| E4M8 | 5.52 | 10.9 |
+
+What makes the renderer faster than the original's:
 
 * **Wall band buffer:** walls are drawn 8 pixels wide into a buffer and
   plotted row by row, so the pixel cache never reads back the screen.
@@ -480,6 +485,7 @@ src/engine/         the original modules + savegame.asm, rumble.asm, order.asm;
 data/               generated game data (not distributed)
 tools/              build, conversion and test tools
 tools/doomfx-src/   the files of the DOOM-FX source release `make data` reads
+tools/rules/        the WAD conversion rules (textures to walls, wall and sprite sizes, sound effects)
 tools/music/        the music converter and song tools (make wadmusic)
 tools/test/         test and analysis scripts (not used by the build)
 tools/legacy/       the xa/xl reference assembler and the xa → asar translator
@@ -504,6 +510,7 @@ Every script's header has the details and its usage.
 | Data set from your files (`make data`) | |
 |---|---|
 | `mkdata.py` | builds a whole data set from the FX3 cartridge, `DOOM.WAD` and `tools/doomfx-src/` |
+| `rules.py` | the WAD conversion rules in `tools/rules/`: `install` into a data set (with `DOOM.WAD`'s palette and texture signatures), `export` learned ones, `check` |
 | `fx3_gfx.py` | walls, sprites and colour maps from a cartridge ROM, rebuilt in the engine's format |
 | `fx3_convert_levels.py` | the 36 FX3 levels as level data files and `levels.inc` |
 | `menus.py` | `build`: the pause/save/load menus from the cartridge's lettering; `retouch`: puts in `tools/menus/*.png` |
