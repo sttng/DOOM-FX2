@@ -1,7 +1,7 @@
 # DOOM for the SNES — Super FX 2 (GSU-2)
 
-SNES **DOOM** rebuilt from the released `DOOM-FX` source (1995; Randy Linden's "Reality Engine", 
-Sculptured Software) with [`asar`](https://github.com/RPGHacker/asar).
+SNES **DOOM** rebuilt from the 1995 [`DOOM-FX`](https://github.com/RandalLinden/DOOM-FX) 
+source (Randy Linden's "Reality Engine") with [`asar`](https://github.com/RPGHacker/asar).
 
 It adds the content and fixes of *The Ultimate DOOM* cartridge (FX3) but stays 
 on a **Super FX 2**. 
