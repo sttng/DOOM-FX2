@@ -187,8 +187,8 @@ make wadsfx    WAD=DOOM.WAD [FULL=1]                            # make fx3sfx
   an echo of the lead part, repeats as pattern calls). A song must fit sound
   RAM; one that does not is simplified step by step (stand-in instruments,
   no echo, no guitar layer, no velocity detail, coarser or no pitch bends, fewer
-  chord voices), and otherwise keeps the cartridge's song. For now only the
-  DOOM II demo uses it; the other ROMs keep the cartridge's music.
+  chord voices), and otherwise keeps the cartridge's song. For now the ROMs
+  keep the cartridge's music.
   `rlsong.py` reads the songs (`list`, `dump`, `midi`, `compare`),
   `spcrender.py` renders them to WAV through the real driver (in an SPC
   emulator, `spcrender/build.sh <libgme source>`).
@@ -253,8 +253,7 @@ make doom2 WAD=PLUTONIA.WAD NAMES=plutonia BANK3F= MASKED=65536 MASKEDBANKS=29 \
   maps (MAP09, 18, 27), only at the end of the game. The finished level's
   name above FINISHED, from the WAD's `CWILVnn` pictures (`--level-names`;
   the shareware set has them too, from `WILVem`).
-* **Music** comes from the FX3 cartridge's (`make wadmusic` would convert the WAD's; only the
-  DOOM II demo does so for now).
+* **Music** comes from the FX3 cartridge's (`make wadmusic` would convert the WAD's).
 
 Maps that do not fit (each needs more than the engine or ROM allows):
 
@@ -270,13 +269,13 @@ Maps that do not fit (each needs more than the engine or ROM allows):
 
 The game skips empty level slots.
 
-## 2 MB builds: shareware DOOM and the DOOM II demo
+## 2 MB build: shareware DOOM
 
-The same engine and source build 2 MB ROMs with everything in the GamePak
-ROM, as on the original cartridge. Their data sets carry `data/regions.json` (a
-copy of `tools/regions-2mb.json`, written by the scripts below): it lists no
-CPU-only sections and replaces `tools/regions.json`, so `make` on such a set
-gives a 2 MB ROM (`romcheck.py` pads to 2 MB). Each set lives in its own data
+The same engine and source build a 2 MB ROM with everything in the GamePak
+ROM, as on the original cartridge. Its data set carries `data/regions.json` (a
+copy of `tools/regions-2mb.json`, written by the script below): it lists no
+CPU-only sections and replaces `tools/regions.json`, so `make` on that set
+gives a 2 MB ROM (`romcheck.py` pads to 2 MB). The set lives in its own data
 directory, as the DOOM II sets do; switch with the `data` link.
 
 Data-set flags in `levels.inc`: `!RLEPISODES` (episodes offered, score
@@ -284,11 +283,11 @@ screens kept), `!RLNOPLASMABFG` (no plasma/BFG frames), `!RLORDERSCREEN`
 (every episode in the menu; the missing ones, and the end of the game after
 the end text, show the order screen, `wad2art.py --order HELP2`).
 
-| | original cartridge | shareware | DOOM II demo | full build |
-|---|---|---|---|---|
-| ROM | 2 MB | 2 MB (1.3 MB used) | 2 MB (1.4 MB used) | 4 MB |
-| levels | 22 | 9 | 3 | 36 (DOOM II: 32) |
-| GSU RAM | 64 KB, no battery | 128 KB, battery | 128 KB, battery | 128 KB, battery |
+| | original cartridge | shareware | full build |
+|---|---|---|---|
+| ROM | 2 MB | 2 MB (1.3 MB used) | 4 MB |
+| levels | 22 | 9 | 36 (DOOM II: 32) |
+| GSU RAM | 64 KB, no battery | 128 KB, battery | 128 KB, battery |
 
 A 2 MB ROM runs on a stock sd2snes / FXPak Pro and in ares.
 
@@ -325,20 +324,6 @@ Tested in MesenCE: boot → title → E1M1, the episode menu, E1M8's end text �
 order screen → title, every map, save/load on all nine maps. The shareware
 licence allows passing on `DOOM1.WAD` unchanged only: a ROM built from it is
 for your own use.
-
-**DOOM II demo:** MAP01–MAP03 (*Entryway*, *Underhalls*, *The Gantlet*).
-
-```sh
-cp -a gamedata-doom2 gamedata-doom2demo && ln -sfn gamedata-doom2demo data   # a copy of a DOOM II data set (make doom2)
-make demo WAD=DOOM2.WAD
-```
-
-`tools/mk2mb.py demo` keeps the first three level slots of a DOOM II data set
-(`--maps N`: the first N); MAP03 ends the game (end text, then the title).
-The demo plays `DOOM2.WAD`'s music (title, intermission and the three maps'
-songs; `tools/music/wad2music.py`).
-Tested in MesenCE: MAP01 → MAP02 → MAP03 → end text → title, and save/load
-on all three maps.
 
 ## Engine limits
 
@@ -494,7 +479,7 @@ src/engine/         the original modules + savegame.asm, rumble.asm, order.asm;
 data/               generated game data (not distributed)
 tools/              build, conversion and test tools
 tools/doomfx-src/   the files of the DOOM-FX source release `make data` reads
-tools/music/        the music converter and song tools (make wadmusic, make demo)
+tools/music/        the music converter and song tools (make wadmusic)
 tools/test/         test and analysis scripts (not used by the build)
 tools/legacy/       the xa/xl reference assembler and the xa → asar translator
 ```
@@ -536,7 +521,7 @@ Every script's header has the details and its usage.
 | `wad2art.py` | title screen, menus, menu skull, fonts, score screens, level names |
 | `wad2cut.py` | weapon HUD frames (the CUT format; `show` renders a weapon) |
 | `wad2soundfx.py` | sound effects (BRR) |
-| `mk2mb.py` | `shareware` / `demo`: cuts a data set down to a 2 MB ROM |
+| `mk2mb.py` | `shareware`: cuts a data set down to a 2 MB ROM |
 
 | Libraries | |
 |---|---|
