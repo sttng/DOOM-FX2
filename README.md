@@ -253,7 +253,7 @@ make doom2 WAD=PLUTONIA.WAD NAMES=plutonia BANK3F= MASKED=65536 MASKEDBANKS=29 \
   maps (MAP09, 18, 27), only at the end of the game. The finished level's
   name above FINISHED, from the WAD's `CWILVnn` pictures (`--level-names`;
   the shareware set has them too, from `WILVem`).
-* **Music** stays the cartridge's (`make wadmusic` would convert the WAD's; only the
+* **Music** comes from the FX3 cartridge's (`make wadmusic` would convert the WAD's; only the
   DOOM II demo does so for now).
 
 Maps that do not fit (each needs more than the engine or ROM allows):
