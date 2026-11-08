@@ -69,7 +69,7 @@ GFXDIRS = ('WALLS', 'IMAGES', 'WALLIMG', 'COLOUR')
 from gfxlimits import EXTRA_BANKS, BANK_3F, MASKED_BANKS, BANKS, NRAW  # noqa: E402  (every wall/sprite bank)
 # convert packs into $1F only with --bank-1f: the cartridge set needs a few KB of it
 # (232 images), a WAD conversion fills every bank it gets, and with 36 DOOM maps the
-# GamePak ROM has no 32 KB to spare (DOOM II's 32 maps leave room: make doom2 uses it)
+# GamePak ROM has no 32 KB to spare (DOOM II's 32 maps leave room: make doom2set uses it)
 PACK_BANKS = [b for b in BANKS if b != 0x1F and b not in EXTRA_BANKS and b != BANK_3F and b not in MASKED_BANKS]
 BANK_LIMIT = {0x1D: 0x55CD}
 # The wall drawer has no strip end: a strip drawn taller than its texture (DOOM II's
