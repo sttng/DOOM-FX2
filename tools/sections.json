@@ -2004,6 +2004,12 @@
   "code": false,
   "home_file": 1114005
  },
+ "CHEATS": {
+  "kind": "reloc",
+  "ram": false,
+  "code": false,
+  "home_file": 1114005
+ },
  "E1M1_J": {
   "kind": "reloc",
   "ram": false,

@@ -17,5 +17,6 @@
  "MUSIC_TABLES": "snesrom",
  "SAVEGAME": "snesrom",
  "RUMBLE": "snesrom",
+ "CHEATS": "snesrom",
  "RL_STATUS*_DATA": "snesrom"
 }
