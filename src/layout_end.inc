@@ -243,6 +243,7 @@ print "SECEND SCOREE4_DATA_1 ",hex(!sec_SCOREE4_DATA_1_real)," ",hex(!sec_SCOREE
 print "SECEND SCOREE4_DATA_2 ",hex(!sec_SCOREE4_DATA_2_real)," ",hex(!sec_SCOREE4_DATA_2_pc)
 print "SECEND SAVEGAME ",hex(!sec_SAVEGAME_real)," ",hex(!sec_SAVEGAME_pc)
 print "SECEND RUMBLE ",hex(!sec_RUMBLE_real)," ",hex(!sec_RUMBLE_pc)
+print "SECEND CHEATS ",hex(!sec_CHEATS_real)," ",hex(!sec_CHEATS_pc)
 print "SECEND E1M1_J ",hex(!sec_E1M1_J_real)," ",hex(!sec_E1M1_J_pc)
 print "SECEND E1M2_J ",hex(!sec_E1M2_J_real)," ",hex(!sec_E1M2_J_pc)
 print "SECEND E1M3_J ",hex(!sec_E1M3_J_real)," ",hex(!sec_E1M3_J_pc)
