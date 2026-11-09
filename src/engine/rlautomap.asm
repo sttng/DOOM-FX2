@@ -88,7 +88,7 @@ _RLInitAutoMap:
 	!rMObjY = !rLineFlagsPtr
 
 
-	%align_pad(12, 16, (_RLDrawAutoMapC-_DAM1000)&$0F)	; align 16,(_RLDrawAutoMapC-_DAM1000)&$0f
+	%align_pad(4, 16, (_RLDrawAutoMapC-_DAM1000)&$0F)	; align 16,(_RLDrawAutoMapC-_DAM1000)&$0f
 ;
 ;	* * * * * * *       REALITY_ENGINE DRAW AUTOMAP       * * * * * * *
 ;
@@ -1089,7 +1089,7 @@ _DAM5000:
 	color
 	ibt r0,#bank(SinTable)	; Bank of SinTable
 	romb
-	lms r0,(RLNumMObjs&$FFFF)	; Get #MovableRLObjects
+	lms r0,(RLNumPMObjs&$FFFF)	; Get #MovableRLObjects (this port: in _RLMObjs)
 	sms (ENEnemy&$FFFF),r0
 	iwt r1,#lo16(_RLMObjs)	; List of RLMovableObjects
 	if useMULTIPLAYER == 0
@@ -1107,10 +1107,17 @@ _DAM6000:
 	ibt r0,#bank(SinTable)	; Bank of SinTable
 	romb
 	lms r1,(AMMObjPtr&$FFFF)
+	ibt r0,#lo16(ComputerMap)	; (this port) ComputerMap 2 (the map cheat,
+	assert (lo16(ComputerMap))&$FFFF < $80 || (lo16(ComputerMap))&$FFFF >= $FF80, "ibt: value does not fit a signed byte"
+;	to	r0				;  cheats.asm): every MObj, else only the player
+	ldb (r0)
+	dec r0
+	dec r0
+	bmi _DAM9000
+	nop
 	lms r0,(ENEnemy&$FFFF)
 	dec r0
-	bra _DAM9000	; (only the player is drawn; bmi drew every MObj)
-;	bmi	_DAM9000
+	bmi _DAM9000
 ;	from	r0
 	sbk
 _DAM6200:

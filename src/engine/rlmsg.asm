@@ -231,3 +231,10 @@ GAMESAVEDMSGB:	db "D.",0
 NOROOMMSGA:	db "NOT ENOUG",0
 NOROOMMSGB:	db "H ROOM TO",0
 NOROOMMSGC:	db " SAVE.",0
+;
+;	>>>   CHEATS   <<<	(this port, cheats.asm; the god mode and map cheats
+;			 show INVULNERABILITY! and COMPUTER AREA MAP)
+;
+CHEATAMMOMSGA:	db "VERY HAPP",0	; (the PC's IDKFA message)
+CHEATAMMOMSGB:	db "Y AMMO AD",0
+CHEATAMMOMSGC:	db "DED",0

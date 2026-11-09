@@ -12,7 +12,7 @@
 
 	%section(REV)
 
-	VerTxt = $4ACF8E
+	VerTxt = $47FFC6
 	assert (VerTxt&$FFFFFF) == ((pc()+1)&$FFFFFF), "cached constant VerTxt is stale (tools/fixup.py)"
 	%VERSTAG()	; Insert Version Tag Text
 VerTxtE:

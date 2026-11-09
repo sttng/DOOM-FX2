@@ -115,6 +115,7 @@ DemoCount:	%ds(1*2)	; #Cycles
 ;	>>>   MENU VARIABLES   <<<
 ;
 MenuSkillLevel:	%ds(1*2)	; 0=Easy,1=Med,2=Hrd,3=UltVio,4=Ngtmre
+CheatStep:	%ds(3*2)	; (this port) cheats.asm: per cheat, the next press (offset in its sequence)
 
 
 ;
@@ -169,8 +170,8 @@ RLSNESXVarsE:
 RLSNESGSUXVars:
 	%ds($1E)	; ds.b (RLGSUXVarsE-RLGSUXVars)
 	assert $1E == (RLGSUXVarsE-RLGSUXVars), "cached ds size is stale (tools/fixup.py)"
-	assert (-$6FFABA&$FFFFFF) == ((RLSNESGSUXVars-RLGSUXVars)&$FFFFFF), "cached constant RLSNESGSUXVarsO is stale (tools/fixup.py)"
-	!RLSNESGSUXVarsO = (-$6FFABA)	; to get GSU  from SNES
+	assert (-$6FFAB4&$FFFFFF) == ((RLSNESGSUXVars-RLGSUXVars)&$FFFFFF), "cached constant RLSNESGSUXVarsO is stale (tools/fixup.py)"
+	!RLSNESGSUXVarsO = (-$6FFAB4)	; to get GSU  from SNES
 ;
 ;	>>>   TABLE OF SOUND EFFECTS COMMANDS   <<<
 ;

@@ -518,7 +518,7 @@ RLGSUXVarsE:
 RLGSUSNESXVars:
 	%ds(12)	; ds.b (RLSNESXVarsE-RLSNESXVars)
 	assert 12 == (RLSNESXVarsE-RLSNESXVars), "cached ds size is stale (tools/fixup.py)"
-	RLGSUSNESXVarsO = $6FFAE4	; to get SNES from GSU
+	RLGSUSNESXVarsO = $6FFADE	; to get SNES from GSU
 	assert (RLGSUSNESXVarsO&$FFFFFF) == ((RLGSUSNESXVars-RLSNESXVars)&$FFFFFF), "cached constant RLGSUSNESXVarsO is stale (tools/fixup.py)"
 ;
 ;	>>>   MORE SHORT PAGE VARIABLES (this port)   <<<

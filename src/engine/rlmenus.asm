@@ -103,6 +103,7 @@ _RLM200:
 ;
 _RLMenus2:
 	sta.b MenuData	; MENUDATA
+	jsl.l CheatReset	; (this port) cheats.asm: no cheat begun
 ;
 ;	>>>   INITIALIZE MENU HDMA   <<<
 ;
@@ -284,6 +285,9 @@ _RLM2400:
 	beq _RLM2000	; Yes, Wait for Change!
 _RLM2500:
 	sta.b MenuJoyOld
+	jsl.l CheatPress	; (this port) cheats.asm: taken by a cheat?
+	bcs _RLM2000	; Yes, Wait for Change!
+	lda.b MenuJoyOld
 
 ;
 ;	* * * * * * *       ESCAPE       * * * * * * *
