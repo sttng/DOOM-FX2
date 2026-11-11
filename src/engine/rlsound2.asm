@@ -25,7 +25,16 @@
 ;	R4 = X Coordinate of Sound Origin
 ;	R6 = Y Coordinate of Sound Origin
 ;
+;	(this port) A table address of 0 (R3 = -1) is no sound: the arch-vile's
+;	fire (modVileFire) has no birth sound.  Read as a table, ROM $00:0000
+;	gave an effect number past the turbo table (140); the SNES streamed
+;	7936 bytes of other ROM data to the APU as that "turbo sound" and hung
+;	on its last block (the game froze after an arch-vile's second attack).
+;
 _RLSoundEffect:
+	inc r3	; No sound effect?
+	beq _RLSE8000	; Yes: return (the dec below runs either way)
+	dec r3
 ;
 ;	>>>   CALCULATE DISTANCE TO SOUND ORIGIN   <<<
 ;

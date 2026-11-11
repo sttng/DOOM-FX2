@@ -52,7 +52,7 @@ _RIPS200:
 ;
 ;	* * * * * * *       ADD A PLATFORM TASK STRUCTURE       * * * * * * *
 ;
-	%align_pad(8, 16, (_RLAddPlatformTask-_RAPT200)&$0F)
+	%align_pad(4, 16, (_RLAddPlatformTask-_RAPT200)&$0F)
 _RLAddPlatformTask:
 	iwt !rTaskData,#lo16(_RLPlatTasks)	; Pointer to PlatTaskData
 
