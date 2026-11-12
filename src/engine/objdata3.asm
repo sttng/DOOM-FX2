@@ -1322,6 +1322,8 @@ mosARCHVILE_MOVE:
 	dw lo16(_RLMSQEnemyMove)
 	dw lo16(_RLMSState),lo16(mosARCHVILE_MOVE)
 moaARCHVILE_MOVE:
+	db $81	; (this port) a corpse to raise? (PC: A_VileChase)
+	dw lo16(_RLMAQEnemyAttack),lo16(_RLEAVileSeek)
 	db 3	; A1
 	db (inArchVileWalk+0)
 	db 3	; B1
@@ -1369,6 +1371,166 @@ moaARCHVILE_DIE:
 	dw lo16(_RLMAEnemyDie)
 	db 1
 	db (inArchVileDie+4)
+
+;
+;	(this port) The arch-vile raises a corpse (PC: A_VileChase; rlenemies5.asm
+;	_RLEAVileSeek): its heal frames ([ \ ] on the PC; here G and J of its attack),
+;	then on.  The corpse plays its death frames backwards (PC: raisestate), then
+;	stands as a monster just placed (its sleep state).
+;
+mosARCHVILE_HEAL:
+	dw lo16(_RLMSWait)
+	dw lo16(_RLMSState),lo16(mosARCHVILE_MOVE)
+moaARCHVILE_HEAL:
+	db 17	; [ (G1)
+	db (inArchVileShoot+0)
+	db 17	; \ (J1)
+	db (inArchVileShoot+1)
+	db 17	; ] (J1)
+	db (inArchVileShoot+1)
+	db $80
+	dw lo16(moaARCHVILE_MOVE)
+moaSOLDIER_RAISE:
+	db 8	; K0
+	db (inSoldierDie+3)
+	db 8	; J0
+	db (inSoldierDie+2)
+	db 8	; I0
+	db (inSoldierDie+1)
+	db 8	; H0
+	db (inSoldierDie+0)
+	db $80
+	dw lo16(moaSOLDIER_SLEEP)
+moaSERGEANT_RAISE:
+	db 8	; K0
+	db (inSergeantDie+3)
+	db 8	; J0
+	db (inSergeantDie+2)
+	db 8	; I0
+	db (inSergeantDie+1)
+	db 8	; H0
+	db (inSergeantDie+0)
+	db $80
+	dw lo16(moaSERGEANT_SLEEP)
+moaTROOPER_RAISE:
+	db 8	; L0
+	db (inTrooperDie+3)
+	db 8	; K0
+	db (inTrooperDie+2)
+	db 8	; J0
+	db (inTrooperDie+1)
+	db 8	; I0
+	db (inTrooperDie+0)
+	db $80
+	dw lo16(moaTROOPER_SLEEP)
+moaDEMON_RAISE:
+	db 8	; L0
+	db (inDemonDie+2)
+	db 8	; K0
+	db (inDemonDie+1)
+	db 8	; I0
+	db (inDemonDie+0)
+	db $80
+	dw lo16(moaDEMON_SLEEP)
+moaCACODEMON_RAISE:
+	db 9	; K0
+	db (inCacoDemonDie+2)
+	db 9	; J0
+	db (inCacoDemonDie+1)
+	db 9	; H0
+	db (inCacoDemonDie+0)
+	db $80
+	dw lo16(moaCACODEMON_SLEEP)
+moaBARONOFHELL_RAISE:
+	db 8	; L0
+	db (inBaronOfHellDie+2)
+	db 8	; K0
+	db (inBaronOfHellDie+1)
+	db 8	; J0
+	db (inBaronOfHellDie+0)
+	db $80
+	dw lo16(moaBARONOFHELL_SLEEP)
+moaCHAINGUNNER_RAISE:
+	db 8	; L0
+	db (inChainGunnerDie+2)
+	db 8	; J0
+	db (inChainGunnerDie+1)
+	db 8	; H0
+	db (inChainGunnerDie+0)
+	db $80
+	dw lo16(moaCHAINGUNNER_SLEEP)
+moaWOLFSS_RAISE:
+	db 10	; K0
+	db (inWolfSSDie+1)
+	db 10	; I0
+	db (inWolfSSDie+0)
+	db $80
+	dw lo16(moaWOLFSS_SLEEP)
+moaHELLKNIGHT_RAISE:
+	db 8	; M0
+	db (inHellKnightDie+2)
+	db 8	; K0
+	db (inHellKnightDie+1)
+	db 8	; I0
+	db (inHellKnightDie+0)
+	db $80
+	dw lo16(moaHELLKNIGHT_SLEEP)
+moaARACHNOTRON_RAISE:
+	db 8	; N0
+	db (inArachnotronDie+2)
+	db 8	; L0
+	db (inArachnotronDie+1)
+	db 8	; J0
+	db (inArachnotronDie+0)
+	db $80
+	dw lo16(moaARACHNOTRON_SLEEP)
+moaMANCUBUS_RAISE:
+	db 8	; O0
+	db (inMancubusDie+2)
+	db 8	; M0
+	db (inMancubusDie+1)
+	db 8	; K0
+	db (inMancubusDie+0)
+	db $80
+	dw lo16(moaMANCUBUS_SLEEP)
+moaREVENANT_RAISE:
+	db 8	; O0
+	db (inRevenantDie+1)
+	db 8	; M0
+	db (inRevenantDie+0)
+	db $80
+	dw lo16(moaREVENANT_SLEEP)
+;
+;	The corpses that rise, by object type (otSoldier on): their raise
+;	animation, 0 = none (PC: no raisestate; the pain elemental leaves none)
+;
+VileRaiseAnims:
+	dw lo16(moaSOLDIER_RAISE)	; Soldier
+	dw lo16(moaSERGEANT_RAISE)	; Sergeant
+	dw lo16(moaTROOPER_RAISE)	; Trooper
+	dw lo16(moaDEMON_RAISE)	; Demon
+	if !RLSPECTRE != 0
+	dw lo16(moaDEMON_RAISE)	; Spectre
+	endif
+	dw lo16(moaCACODEMON_RAISE)	; CacoDemon
+	dw 0	; LostSoul
+	dw lo16(moaBARONOFHELL_RAISE)	; BaronOfHell
+	dw 0	; CyberDemon
+	dw 0	; SpiderDemon
+	dw lo16(moaCHAINGUNNER_RAISE)	; ChainGunner
+	dw lo16(moaWOLFSS_RAISE)	; WolfSS
+	dw lo16(moaHELLKNIGHT_RAISE)	; HellKnight
+	dw lo16(moaARACHNOTRON_RAISE)	; Arachnotron
+	dw lo16(moaMANCUBUS_RAISE)	; Mancubus
+	dw lo16(moaREVENANT_RAISE)	; Revenant
+	dw 0	; PainElemental
+	dw 0	; ArchVile
+	dw 0	; Keen
+	dw 0	; BossBrain
+	dw 0	; BossShooter
+	dw 0	; BossTarget
+VileRaiseAnimsE:
+	assert VileRaiseAnimsE-VileRaiseAnims == (otMObj-otSoldier+1)*2, "VileRaiseAnims: one entry per monster type"
 
 ;
 ;	* * * * * * *       COMMANDER KEEN STATE TABLE (DOOM II)       * * * * * * *

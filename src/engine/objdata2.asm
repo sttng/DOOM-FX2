@@ -325,8 +325,8 @@ modPainElemental:
 ;
 ;	>>>   ARCH-VILE (DOOM II)   <<<
 ;
-;	PC: 700 HP, pain 10/256, A_VileAttack: 20 + fire on the target (here: no 70 radius,
-;	no resurrection)
+;	PC: 700 HP, pain 10/256, A_VileAttack: 20 + fire on the target (here: no 70 radius);
+;	A_VileChase raises corpses (here: rlenemies5.asm _RLEAVileSeek)
 ;
 modArchVile:
 	dw 700
@@ -338,7 +338,7 @@ modArchVile:
 	dw 0
 	dw ((20<<8)|0)
 	dw lo16(sxBaronOfHellAwake)
-	dw 0
+	dw lo16(sxVileRaise)	; (this port: no close attack; a corpse it raises, rlenemies5.asm)
 	dw lo16(sxBarrelExplode)
 	dw lo16(sxDemonDamage)
 	dw lo16(sxBaronOfHellDie)
@@ -800,7 +800,7 @@ modVileFire:
 	dw 0
 	dw 0
 	dw 0
-	dw 0
+	dw lo16(sxVileFire)	; Birth Sound (PC: DSFLAMST, then DSFLAME)
 	dw 0
 	dw 0
 	dw 0

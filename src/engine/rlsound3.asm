@@ -300,3 +300,21 @@ sxMissileDie:
 	db firxpl2_eff
 	db $FF
 	db firxpl_eff
+
+	if !RLDOOM2MONSTERS != 0
+;
+;	>>>   ARCH-VILE FIRE (DOOM II)   <<<
+;
+sxVileFire:
+	db $80	; Arch-Vile Fire (DSFLAMST, DSFLAME)
+	db vilefire3_eff
+	db $D0
+	db vilefire2_eff
+	db $FF
+	db vilefire_eff
+sxVileRaise:
+	db $D0	; A Corpse Rising (DSSLOP: the arch-vile's resurrection)
+	db vileraise2_eff
+	db $FF
+	db vileraise_eff
+	endif

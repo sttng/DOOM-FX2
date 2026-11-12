@@ -512,9 +512,20 @@ _RLNMR800:
 	link #4	; Into the new sector's object list
 	iwt r15,#lo16(_RLAddSectorObject)
 	nop
+	link #4	; Alive again
+	iwt r15,#lo16(_RLAliveAgain)
+	nop
+	lms r0,(NMCount&$FFFF)
+	inc r0
+	sbk
+	iwt r15,#lo16(_RLNM9000)
+	nop
 ;
-;	>>>   ALIVE AGAIN   <<<
+;	>>>   ALIVE AGAIN: THE MONSTER AT r12 (ALSO THE ARCH-VILE'S RAISE, RLENEMIES5.ASM)   <<<
 ;
+;	r0-r3, r5, r14; ROM bank _MObjData
+;
+_RLAliveAgain:
 	ibt r2,#rloFlags	; SOLID and TARGET, not an item
 	with r2
 	add !rNMObj
@@ -594,9 +605,5 @@ _RLNMR900:
 	stw (r1)
 	lms r0,(RLNumPMObjs&$FFFF)
 	inc r0
+	jmp r11
 	sbk
-	lms r0,(NMCount&$FFFF)
-	inc r0
-	sbk
-	iwt r15,#lo16(_RLNM9000)
-	nop

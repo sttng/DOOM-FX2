@@ -328,6 +328,211 @@ _RLEAVileAttack:
 	iwt r1,#lo16(_RLEBirthAtTarget)
 	iwt r15,#lo16(_RLEAQEnemyBirth)
 	nop
+
+;
+;	Arch-Vile (this port, as the PC's A_VileChase; queued by its walk animation):
+;	a corpse that can rise (VileRaiseAnims; dead: no longer TARGET) close to it
+;	(|dX|, |dY| < the corpse's radius + 35: the PC takes the vile's radius 20
+;	and a step of 15 ahead) with room around it (no ACTIVE SOLID object
+;	overlapping, the vile included) rises: alive again (rlmisc.asm
+;	_RLAliveAgain: health, flags, its sleep state), its death frames backwards;
+;	the vile heals, DSSLOP (its close attack sound, unused otherwise).
+;
+	!rVX = r7	; Vile X
+	!rVY = r8	; Vile Y
+	!rCount = r9	; Objects left
+	!rCorpse = r10	; The object looked at
+	!rRaiseA = r5	; Its raise animation
+	VileRaiseReach = 35	; (radius 20 + step 15)
+;
+_RLEAVileSeek:
+	from !rObj	; The vile's X/Y
+	%add_i((rloX+2))
+	to !rVX
+	ldw (r0)
+	%add_i(((rloY+2)-(rloX+2)))
+	to !rVY
+	ldw (r0)
+	iwt !rCorpse,#lo16(_RLMObjects)	; (slot 0 is the player)
+	iwt !rCount,#(MaxRLMObjects-1)
+_RLEAVS1:
+	ibt r0,#bank(_MObjData)	; (VileRaiseAnims)
+	romb
+_RLEAVS8:
+	ibt r0,#rloSize	; Next object
+	with !rCorpse
+	add r0
+	dec !rCount
+	bmi _RLEAVS9
+	from !rCorpse	; A monster that rises?
+	%add_i(rloType)
+	ldb (r0)
+	%sub_i(otSoldier)
+	ibt r1,#(otMObj-otSoldier)
+	from r1
+	cmp r0
+	bcc _RLEAVS8	; (unsigned: no)
+;	with	r0
+	add r0
+	iwt r1,#lo16(VileRaiseAnims)
+	to r14
+	add r1
+	getb
+	inc r14
+	getbh
+	moves !rRaiseA,r0
+	beq _RLEAVS8
+	from !rCorpse	; Dead? (no longer TARGET; a free slot holds none that rises)
+	%add_i(rloFlags)
+	ldb (r0)
+	ibt r1,#rlpfTarget
+	and r1
+	bne _RLEAVS8
+	nop
+	link #4	; Close to the vile, with room to rise?
+	iwt r15,#lo16(_RLVileRoom)
+	nop
+	moves r1,r1
+	bne _RLEAVS1
+	nop
+;
+;	>>>   THE CORPSE RISES, THE VILE HEALS   <<<
+;
+	move r8,!rRaiseA
+	move r13,!rObj
+	move !rObj,!rCorpse
+	link #4
+	iwt r15,#lo16(_RLAliveAgain)
+	nop
+	ibt r1,#rloAnim	; Its raise animation
+	with r1
+	add !rObj
+	from r8
+	stw (r1)
+	move !rObj,r13
+	ibt r1,#rloAnim	; The vile heals
+	with r1
+	add !rObj
+	iwt r0,#lo16(moaARCHVILE_HEAL)
+	stw (r1)
+	inc r1
+	iwt r0,#(51<<8)	; AnimCount 0, StateCount 51 (3 heal frames)
+	inc r1
+	stw (r1)
+	inc r1
+	inc r1
+	iwt r0,#lo16(mosARCHVILE_HEAL)
+	stw (r1)
+	ibt r1,#rlmodAttackCloseSound	; DSSLOP
+	iwt r15,#lo16(_RLEA5000)
+	nop
+_RLEAVS9:
+	iwt r15,#lo16(_RLEA8000)	; No corpse
+	nop
+;
+;	>>>   CLOSE TO THE VILE, WITH ROOM TO RISE?  (R1 = 0: YES)   <<<
+;
+;	R10 = the corpse, R7/R8 = the vile's X/Y; R0-R4, R6, R13, R14; ROM bank _ObjData
+;
+_RLVileRoom:
+	ibt r0,#bank(_ObjData)
+	romb
+	from !rCorpse	; R2 = its radius
+	%add_i(rloType)
+	ldb (r0)
+	%umult_i(rlodSize)
+	iwt r1,#lo16(_ObjData+rlodDiameter)
+	to r14
+	add r1
+	getb
+	to r2
+	lsr
+	from !rCorpse	; R3/R4 = its X/Y
+	%add_i((rloX+2))
+	to r3
+	ldw (r0)
+	%add_i(((rloY+2)-(rloX+2)))
+	to r4
+	ldw (r0)
+	ibt r13,#VileRaiseReach	; Close to the vile?
+	with r13
+	add r2
+	from r3
+	sub !rVX
+	bpl _RLVR0
+	nop
+	not
+	inc r0
+_RLVR0:
+	cmp r13
+	bge _RLVR9
+	from r4
+	sub !rVY
+	bpl _RLVR1
+	nop
+	not
+	inc r0
+_RLVR1:
+	cmp r13
+	bge _RLVR9
+	nop
+	iwt r1,#lo16(_RLMObjects)	; Every movable object (the player first; a
+	iwt r6,#MaxRLMObjects	;  corpse or a free slot is not SOLID)
+_RLVR2:
+	from r1	; ACTIVE and SOLID?
+	%add_i(rloFlags)
+	ldb (r0)
+	iwt r13,#(rlpfActive|rlpfSolid)
+	and r13
+	cmp r13
+	bne _RLVR8
+	from r1	; R13 = the two radii
+	%add_i(rloType)
+	ldb (r0)
+	%umult_i(rlodSize)
+	iwt r13,#lo16(_ObjData+rlodDiameter)
+	to r14
+	add r13
+	getb
+;	with	r0
+	lsr
+	to r13
+	add r2
+	from r1	; |dX| < R13?
+	%add_i((rloX+2))
+	ldw (r0)
+	sub r3
+	bpl _RLVR4
+	nop
+	not
+	inc r0
+_RLVR4:
+	cmp r13
+	bge _RLVR8
+	from r1	; |dY| < R13?
+	%add_i((rloY+2))
+	ldw (r0)
+	sub r4
+	bpl _RLVR5
+	nop
+	not
+	inc r0
+_RLVR5:
+	cmp r13
+	bge _RLVR8
+	nop
+_RLVR9:
+	jmp r11	; No (too far, or no room)
+	ibt r1,#1
+_RLVR8:
+	ibt r0,#rloSize	; Next object
+	with r1
+	add r0
+	dec r6
+	bne _RLVR2
+	nop
+	jmp r11	; Yes
+	ibt r1,#0
 ;
 ;	MAP30 boss shooter: a monster (_RLBrainSpawnMods) at a random spawn spot (otBossTarget)
 ;
