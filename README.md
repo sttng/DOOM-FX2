@@ -106,7 +106,7 @@ cheat over.
   | Mancubus | 3 volleys of 2 fireballs | volley pattern |
   | Revenant | punch or missile | missile does not home, no smoke |
   | Pain elemental | spits lost souls | no souls on death, no 20-soul limit |
-  | Arch-vile | flame attack | no blast lift, no resurrection |
+  | Arch-vile | flame attack, raises the dead | no blast lift; heals with its attack frames |
   | Commander Keen | hangs from the ceiling | |
   | Boss brain, shooter | monsters appear at random spots; killing it ends the game | no cubes |
 

@@ -26,6 +26,12 @@ look-ahead peak limiter, limit()) and stored as BRR:
     the 65816 tells turbo sounds apart by their data address, rlsound.asm) and its effect
     record (the demon death's: 4000 Hz, so a slot holds 1.47 s), at the WAD's
     own level (NEWTURBO_GAIN 1.0: no boost).
+  * The imp's "active" sound (DSBGACT, effects $1C/$36/$50) is never played
+    either (the engine has no active sounds).  When the WAD has DSFLAMST and
+    DSFLAME (DOOM II, TNT, Plutonia), its slot holds the arch-vile fire's
+    sound, timed as on the PC (vile_fire()).
+  * The player death's two quieter variants ($43, $5D: the engine plays only
+    $29) carry DSSLOP, a corpse the arch-vile raises (SLOP).
 
   learn    match each cartridge sample (RLDATA/MUSIC) to its WAD lump: rate,
            start offset, gain -> DATA/wad2soundfx.json; backs up the
@@ -306,6 +312,33 @@ REPLACE = {'sgtdth': 'DSDSHTGN'}
 # table: BWave 30.  NEWTURBO_GAIN: their level against the WAD's (1.0: as in the WAD)
 NEWTURBO = {0x18: 'DSSAWFUL', 0x49: 'DSSAWUP', 0x63: 'DSSAWHIT'}
 NEWTURBO_TEMPLATE, NEWTURBO_INSTR, NEWTURBO_BWAVE, NEWTURBO_GAIN = 0x2F, 0x1C, 30, 1.0
+# the imp's "active" sound (DSBGACT, effects $1C/$36/$50) is never played: its slot holds
+# DOOM II's arch-vile fire (vilefire_eff in music.inc) when the WAD has DSFLAMST and DSFLAME,
+# as the PC plays them: DSFLAMST, after 8 tics DSFLAME, after 28 more DSFLAME again (each
+# cuts the one before), up to the slot's 1.47 s at its 4 kHz, at the WAD's own level
+VILEFIRE_EFFECT = 0x1C
+# the player death's two quieter variants ($43, $5D) are never played (the engine plays $29):
+# they carry DSSLOP (a corpse the arch-vile raises: vileraise_eff in music.inc) when the WAD has
+# it, with $29's record at volumes $A0 and $50 (two distance steps), its sample slot (BWave 24)
+# and rate (6 kHz: the slot holds 0.98 s), at the WAD's own level
+SLOP = {0x43: 0xA0, 0x5D: 0x50}
+SLOP_TEMPLATE = 0x29
+
+
+def vile_fire(W):
+    """the arch-vile fire's sound (DSFLAMST + DSFLAME, timed as on the PC) or None"""
+    if 'DSFLAMST' not in W or 'DSFLAME' not in W:
+        return None
+    rate, st = W['DSFLAMST']
+    r2, fl = W['DSFLAME']
+    if r2 != rate:
+        fl = resample(fl, r2, rate)
+    tic = rate / 35
+    parts = [np.array(p, float) for p in (st[:round(8 * tic)], fl[:round(28 * tic)], fl)]
+    ramp = 32                                   # (a cut sound ends in a short ramp, not a click)
+    for p in parts[:-1]:
+        p[-ramp:] *= np.linspace(1, 0, ramp)
+    return rate, np.concatenate(parts)
 
 
 def convert(a):
@@ -314,8 +347,17 @@ def convert(a):
     gains = {r['name']: r['gain'] for r in rules}
     md = rlmusic.MusicData(os.path.join(data, BACKUP))       # always from the cartridge data
     W = wad_sounds(a.wad)
+    vf = vile_fire(W)
     res_chunk = None
     for s in rules:
+        if s['effect'] == VILEFIRE_EFFECT and vf:
+            t = dict(s, lump='VILEFIRE', offset=0, gain=NEWTURBO_GAIN)
+            b = brr.encode(make_pcm(t, dict(W, VILEFIRE=vf), full=True))
+            assert len(b) + TURBO_HDR <= SLOT
+            md.data[md.chunks[s['chunk']][0]] = bytes.fromhex(s['header']) + b
+            print('%-9s %-9s %5.0f Hz  %4d bytes (the %s slot, never played)' % (
+                'vilefire', 'DSFLAMST+DSFLAME', s['rate'], len(b), s['lump']))
+            continue
         if s['name'] in REPLACE:
             lump = REPLACE[s['name']]
             if lump in W:                       # whole, at the slot's rate, the shotgun's level
@@ -376,6 +418,20 @@ def convert(a):
         md.turbo[e][0] = NEWTURBO_BWAVE
         print('%-9s %-9s %5.0f Hz  %4d bytes (new turbo sound, effect $%02X)' % (
             lump.lower()[2:], lump if lump in W else '(none)', hz(tr), len(b), e))
+    if 'DSSLOP' in W:                           # (SLOP: a new chunk for both effects)
+        tr = [r for r in rules if r['effect'] == SLOP_TEMPLATE][0]
+        b = brr.encode(make_pcm(dict(tr, lump='DSSLOP', offset=0, gain=NEWTURBO_GAIN), W, full=True))
+        assert len(b) + TURBO_HDR <= SLOT
+        fake = 0x7F0000 + SLOP_TEMPLATE
+        md.chunks.append((fake, 0)); md.data[fake] = bytes.fromhex(tr['header']) + b
+        for e, vol in sorted(SLOP.items()):
+            rec = bytearray(a[eff[SLOP_TEMPLATE]:eff[SLOP_TEMPLATE] + 9]); rec[7] = vol
+            o = eff[e] - RESIDENT
+            res_chunk[o:o + 9] = rec
+            tmap[e] = len(md.chunks) - 1
+            assert md.turbo[e][0] == md.turbo[SLOP_TEMPLATE][0]
+        print('%-9s %-9s %5.0f Hz  %4d bytes (effects $%02X, $%02X: the player death\'s quieter variants)' % (
+            'slop', 'DSSLOP', tr['rate'], len(b), *sorted(SLOP)))
     md.data[md.chunks[rc][0]] = bytes(res_chunk)
     out = os.path.join(data, MUSIC)
     n = md.save(out, turbo_map=tmap)

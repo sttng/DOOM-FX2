@@ -104,8 +104,15 @@ make wadsfx    WAD=DOOM.WAD [FULL=1]                            # make fx3sfx
   (`DSSAWHIT`) sounds as streamed effects (4 kHz, at most 1.47 s: the
   cutting sound fades out, the others play whole; at the WAD's own level,
   not boosted), the start-up and hit ones in the two other demon death
-  effect numbers. A streamed sound already in a slot is replayed from
-  there (the slot keeps the sample's start address).
+  effect numbers. The imp's "active" sound (`DSBGACT`) was never played
+  either (the engine has no active sounds): in DOOM II, TNT and Plutonia
+  its slot holds the arch-vile fire's sound, `DSFLAMST` and `DSFLAME` timed
+  as on the PC (the start, after 8 tics the crackle, after 28 more the
+  crackle again; 1.47 s at 4 kHz, at the WAD's level). The player death's
+  two quieter variants (the player dies at full volume) carry `DSSLOP`, a
+  corpse the arch-vile raises (6 kHz, 0.98 s). A streamed sound already in
+  a slot is replayed from there (the slot keeps the sample's start
+  address).
 * **Music** (`tools/music/`, `make wadmusic`): `wad2music.py` converts the
   WAD's MUS scores into song modules for the SPC700 driver (*Song format*),
   played with the cartridge's instruments and arranged by the rules of the
@@ -143,7 +150,7 @@ reworked skies: `TNT_SKIES`, `PLUTONIA_SKIES`.
   | Mancubus | 3 volleys of 2 fireballs | volley pattern |
   | Revenant | punch or missile | missile does not home, no smoke |
   | Pain elemental | spits lost souls | no souls on death, no 20-soul limit |
-  | Arch-vile | flame attack | no blast lift, no resurrection |
+  | Arch-vile | flame attack, raises the dead | no blast lift; heals with its attack frames |
   | Commander Keen | hangs from the ceiling | |
   | Boss brain, shooter | monsters appear at random spots; killing it ends the game | no cubes; DOOM's finale text |
 
